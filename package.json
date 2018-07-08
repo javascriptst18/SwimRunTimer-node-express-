@@ -1,0 +1,16 @@
+{
+  "name": "node-base-config",
+  "version": "1.0.0",
+  "description": "Base for a http-server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Jesper Orb <jesperorb@gmail.com> (https://jesperorb.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "4.16.3"
+  }
+}

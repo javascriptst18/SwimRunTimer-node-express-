@@ -1,6 +1,21 @@
 
 let buttonWrapper = document.querySelector(".griditem2");
 let raceClock = document.querySelector(".raceKlocka");
+let menyResultat = document.querySelector(".menyResultat");
+let raceSelect = document.querySelector(".raceSelect");
+
+let lopp = "stora"
+
+
+
+raceSelect.addEventListener("change", (e) =>{
+    raceSelect = document.querySelector(".raceSelect");
+    lopp = raceSelect.value;
+})
+
+menyResultat.addEventListener("click", () =>{
+ buttonWrapper.classList.toggle("hidden");
+})
 
 raceClock.addEventListener("click", () =>{
     const raceStartTime = new Date();
@@ -9,12 +24,12 @@ raceClock.addEventListener("click", () =>{
     data.starttid = raceStartTime;
     let parent = raceClock.parentElement;
     parent.removeChild(raceClock);
-    patchFetchData("https://sosswimrun.herokuapp.com/starttid/","0", data);
+    patchFetchData("http://localhost:3000/starttid/" + lopp , data);
 
 });
 
 (async function(){
-const deltagare = await getFetchData("https://sosswimrun.herokuapp.com/deltagare");
+const deltagare = await getFetchData("http://localhost:3000/deltagare/" + lopp);
 for(let lag of deltagare){
     let lagnummmer = lag.id;
     let button = document.createElement("button");
@@ -28,18 +43,21 @@ buttonWrapper.addEventListener("click", (e) =>{
 if(e.target.className == "teamButton"){
     const goalTime = new Date();
     const team = e.target.textContent;
-    console.log(e.target.textContent)
     data = {};
     data.maltid = goalTime;
-    patchFetchData("https://sosswimrun.herokuapp.com/deltagare/", team, data);
+    let url = "http://localhost:3000/deltagarelopp" + lopp + "/" + team;
+    
+    patchFetchData(url, data);
     (async function(){
-    let dataStart = await getFetchData("https://sosswimrun.herokuapp.com/starttid/0");
+    
+    let dataStart = await getFetchData("http://localhost:3000/starttid/" + lopp);
+    console.log(dataStart);
     let resultatLista = document.querySelector(".griditem3")
-    let startTime = dataStart.starttid;
     let goalMilliSec = Date.parse(goalTime);
-    let startTimeMilliSec = Date.parse(startTime);
+    let startTimeMilliSec = Date.parse(dataStart);
     let result = goalMilliSec - startTimeMilliSec;
     result = result / 1000;
+    result = secToHHMMSS(result);
     let paragraph = document.createElement("p");
     paragraph.textContent = `Team ${team}: ${result}`;
     
@@ -54,6 +72,7 @@ if(e.target.className == "teamButton"){
 
 async function getFetchData(url){
    let response = await fetch(url);
+   console.log(response);
    let data = await response.json();
    return data;
 
@@ -75,9 +94,9 @@ async function postFetchData(url, post){
         console.log(error);
     }
 }
-async function patchFetchData(url, id, post){
+async function patchFetchData(url, post){
     try{
-        fetch(url+id,{
+       await fetch(url,{
             method: "PATCH",
                   
             body: JSON.stringify(post),
@@ -91,4 +110,26 @@ async function patchFetchData(url, id, post){
     catch(error){
         console.log(error);
     }
+}
+
+function secToHHMMSS(input){
+    let inputSec = parseInt(input);
+    let hour = 0;
+    let min = 0;
+   
+    while(inputSec>60){
+        inputSec = inputSec-60;
+        min++;
+    }
+    while(min>60){
+        min = min-60;
+        hour++;
+    }
+
+   hour = ("0" + hour).slice(-2);
+   min = ("0" + min).slice(-2);
+   inputSec = ("0" + inputSec).slice(-2);
+
+
+    return `${hour}:${min}:${inputSec}`;
 }

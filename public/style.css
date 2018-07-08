@@ -45,7 +45,11 @@ h1{
 
 
 
-/* Classes                                                                  */
+/* Classes     */
+
+.hidden{
+    display: none;
+}
 
 .gridWrapperMain{
     display: grid;
