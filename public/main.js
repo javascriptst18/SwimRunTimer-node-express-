@@ -31,10 +31,7 @@ raceClock.addEventListener("click", () =>{
 (async function(){
 const deltagare = await getFetchData("http://localhost:3000/deltagare/" + lopp);
 for(let lag of deltagare){
-    let lagnummmer = lag.id;
-    let button = document.createElement("button");
-    button.classList.add("teamButton");
-    button.textContent = lagnummmer;
+    let button = createTeamButton(lag.id);
     buttonWrapper.appendChild(button);
 }
 })();
@@ -51,16 +48,14 @@ if(e.target.className == "teamButton"){
     (async function(){
     
     let dataStart = await getFetchData("http://localhost:3000/starttid/" + lopp);
-    console.log(dataStart);
     let resultatLista = document.querySelector(".griditem3")
     let goalMilliSec = Date.parse(goalTime);
     let startTimeMilliSec = Date.parse(dataStart);
     let result = goalMilliSec - startTimeMilliSec;
-    result = result / 1000;
+    result = msecToSec(result)
     result = secToHHMMSS(result);
     let paragraph = document.createElement("p");
     paragraph.textContent = `Team ${team}: ${result}`;
-    
     resultatLista.appendChild(paragraph);
 
 })();  
@@ -69,6 +64,42 @@ if(e.target.className == "teamButton"){
 
 
 // FUNCTIONS
+
+function msecToSec (msec){
+    return msec/1000;
+}
+
+function createTeamButton (lagnummer){
+    let button = document.createElement("button");
+    button.classList.add("teamButton");
+    button.textContent = lagnummer;
+    return button;
+}
+
+function secToHHMMSS(input){
+    let inputSec = parseInt(input);
+    let hour = 0;
+    let min = 0;
+   
+    while(inputSec>60){
+        inputSec = inputSec-60;
+        min++;
+    }
+    while(min>60){
+        min = min-60;
+        hour++;
+    }
+
+   hour = ("0" + hour).slice(-2);
+   min = ("0" + min).slice(-2);
+   inputSec = ("0" + inputSec).slice(-2);
+
+
+    return `${hour}:${min}:${inputSec}`;
+}
+
+
+//FETCH functions
 
 async function getFetchData(url){
    let response = await fetch(url);
@@ -112,24 +143,3 @@ async function patchFetchData(url, post){
     }
 }
 
-function secToHHMMSS(input){
-    let inputSec = parseInt(input);
-    let hour = 0;
-    let min = 0;
-   
-    while(inputSec>60){
-        inputSec = inputSec-60;
-        min++;
-    }
-    while(min>60){
-        min = min-60;
-        hour++;
-    }
-
-   hour = ("0" + hour).slice(-2);
-   min = ("0" + min).slice(-2);
-   inputSec = ("0" + inputSec).slice(-2);
-
-
-    return `${hour}:${min}:${inputSec}`;
-}

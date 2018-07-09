@@ -29,16 +29,17 @@ app.get("/starttid/:lopp", function(req, res, err) {
     if (err) {
       throw err;
     }
-
+    
     let response = JSON.parse(data);
-    if(req.params.lopp = "stora"){
+    if(req.params.lopp == "stora"){
+      console.log("Hej");
       res.send(JSON.stringify(response.starttid[0].starttid));
     }
-    else if(req.params.lopp = "mellan"){
-      res.send(response.starttid[1].starttid);  
+    else if(req.params.lopp == "mellan"){
+      res.send(JSON.stringify(response.starttid[1].starttid));  
     }
-    else if(req.params.lopp = "lilla"){
-      res.send(response.starttid[2].starttid);  
+    else if(req.params.lopp == "lilla"){
+      res.send(JSON.stringify(response.starttid[2].starttid));  
     }
 
     
@@ -62,13 +63,13 @@ app.get("/deltagare/:lopp", function(req, res, err) {
       throw err;
     }
     let response = JSON.parse(data);
-    if(req.params.lopp = "stora"){
+    if(req.params.lopp == "stora"){
       res.send(response.deltagareLoppStora);
     }
-    else if(req.params.lopp = "mellan"){
+    else if(req.params.lopp == "mellan"){
       res.send(response.deltagareLoppMellan);  
     }
-    else if(req.params.lopp = "lilla"){
+    else if(req.params.lopp == "lilla"){
       res.send(response.deltagareLoppLilla);  
     }
 
@@ -128,7 +129,6 @@ app.patch("/deltagareloppmellan/:team", function(req, res, err) {
     });
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
-      console.log("Saved!");
       res.send("ok")
     });
   });
@@ -148,7 +148,6 @@ app.patch("/deltagarelopplilla/:team", function(req, res, err) {
     });
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
-      console.log("Saved!");
       res.send("ok")
     });
   });
