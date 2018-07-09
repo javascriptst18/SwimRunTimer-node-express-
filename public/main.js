@@ -4,7 +4,8 @@ let raceClock = document.querySelector(".raceKlocka");
 let menyResultat = document.querySelector(".menyResultat");
 let raceSelect = document.querySelector(".raceSelect");
 
-let lopp = "stora"
+let lopp = "mellan"
+let startgrupp = "ingen";
 
 
 
@@ -24,7 +25,7 @@ raceClock.addEventListener("click", () =>{
     data.starttid = raceStartTime;
     let parent = raceClock.parentElement;
     parent.removeChild(raceClock);
-    patchFetchData("http://localhost:3000/starttid/" + lopp , data);
+    patchFetchData(`http://localhost:3000/starttid/${lopp}/${startgrupp} `, data);
 
 });
 

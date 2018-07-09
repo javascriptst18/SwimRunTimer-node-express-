@@ -77,20 +77,51 @@ app.get("/deltagare/:lopp", function(req, res, err) {
   });
 });
 
-app.patch("/starttid/:lopp", function(req, res, err) {
+app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
   fs.readFile("./public/db.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
     
-    temp.starttid.map(function(lopp) {
-      if (lopp.lopp == req.params.lopp) {
-        if (req.body.starttid) {
-          lopp.starttid = req.body.starttid;
+    for(let i = 0; i<3; i++){
+      if (temp.starttid[i].lopp == req.params.lopp) {
+        if(req.params.grupp == 1){
+          if (req.body.starttid) {
+            temp.starttid[0].starttid = req.body.starttid;
+          }
         }
+        if(req.params.grupp == 2){
+          if (req.body.starttid) {
+            temp.starttid[1].starttid = req.body.starttid;
+          }
+        }
+        if(req.params.grupp== "ingen"){
+          if (req.body.starttid) {
+            temp.starttid[2].starttid = req.body.starttid;
+          }
+        }
+        
       }
-    });
+    }
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
-      console.log("Saved!");
+      res.send("ok")
+    });
+  });
+
+});
+app.patch("/starttid/:lopp/", function(req, res, err) {
+  fs.readFile("./public/db.json", "utf-8", function(err, data) {
+    let temp = JSON.parse(data);
+    console.log("im here1");
+      if (req.params.lopp == "mellan") { 
+        console.log("im here2");
+          if (req.body.starttid) {
+            console.log("im here3");
+            temp.starttid[2].starttid = req.body.starttid;
+          }
+      }
+    
+    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
+      if (err) throw err;
       res.send("ok")
     });
   });
