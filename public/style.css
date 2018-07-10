@@ -69,6 +69,8 @@ h1{
     grid-column-end: 5;
     min-height: 100vh;
     padding: 15px 10px 15px 10px;
+    display:flex;
+    flex-direction: column;
 }
 .griditem3{
     grid-column-start: 5;
@@ -82,11 +84,27 @@ h1{
     display: flex;
     flex-wrap: wrap;
 }
+.raceKlocka1, .raceKlocka2, .raceKlocka3{
+    width: 30%;
+    height: 90%;
+    border-radius: 10px;
+}
 .flexwrapperMeny{
     display: inline-flex;
     justify-content: flex-end;
     align-items: center;
     
+}
+.buttonWrapper{
+min-height: 100%;
+}
+.startButtons{
+    width: 100%;
+    align-self: center;
+    height: 100px;
+}
+.hidden{
+    display:none;
 }
 
 .teamButton{

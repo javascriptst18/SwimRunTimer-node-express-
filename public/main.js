@@ -1,6 +1,9 @@
 
-let buttonWrapper = document.querySelector(".griditem2");
-let raceClock = document.querySelector(".raceKlocka");
+let buttonWrapper = document.querySelector(".buttonWrapperLang");
+let buttonWrapper2 = document.querySelector(".buttonWrapperMellan");
+let raceClock1 = document.querySelector(".raceKlocka1");
+let raceClock2 = document.querySelector(".raceKlocka2");
+let raceClock3 = document.querySelector(".raceKlocka3");
 let menyResultat = document.querySelector(".menyResultat");
 let raceSelect = document.querySelector(".raceSelect");
 
@@ -13,36 +16,66 @@ raceSelect.addEventListener("change", (e) =>{
     raceSelect = document.querySelector(".raceSelect");
     if(raceSelect.value=="stora"){
         lopp = "stora"; 
-        startgrupp = 1; 
+         document.querySelector(".mellan").classList.add("hidden");
+         document.querySelector(".langa").classList.remove("hidden");
     }else if(raceSelect.value=="mellan"){
         lopp = "mellan";
+        document.querySelector(".mellan").classList.remove("hidden");
+         document.querySelector(".langa").classList.add("hidden");
         startgrupp = "ingen";
          
     }
 })
 
-menyResultat.addEventListener("click", () =>{
- buttonWrapper.classList.toggle("hidden");
-})
 
-raceClock.addEventListener("click", () =>{
+
+raceClock1.addEventListener("click", () =>{
     const raceStartTime = new Date();
     let data ={};
     
     data.starttid = raceStartTime;
-    let parent = raceClock.parentElement;
-    parent.removeChild(raceClock);
-    patchFetchData(`http://localhost:3000/starttid/${lopp}/${startgrupp} `, data);
+    let parent = raceClock1.parentElement;
+    parent.removeChild(raceClock1);
+    patchFetchData(`http://localhost:3000/starttid/${lopp}/1 `, data);
+
+});
+raceClock2.addEventListener("click", () =>{
+    const raceStartTime = new Date();
+    let data ={};
+    
+    data.starttid = raceStartTime;
+    let parent = raceClock2.parentElement;
+    parent.removeChild(raceClock2);
+    patchFetchData(`http://localhost:3000/starttid/${lopp}/2 `, data);
+
+});
+raceClock3.addEventListener("click", () =>{
+    const raceStartTime = new Date();
+    let data ={};
+    
+    data.starttid = raceStartTime;
+    let parent = raceClock3.parentElement;
+    parent.removeChild(raceClock3);
+    patchFetchData(`http://localhost:3000/starttid/mellan/ingen`, data);
 
 });
 
 (async function(){
-const deltagare = await getFetchData("http://localhost:3000/deltagare/" + lopp);
+const deltagare = await getFetchData("http://localhost:3000/deltagare/stora");
 for(let lag of deltagare){
     let button = createTeamButton(lag.id);
     buttonWrapper.appendChild(button);
 }
 })();
+
+(async function(){
+    const deltagare = await getFetchData("http://localhost:3000/deltagare/mellan");
+    for(let lag of deltagare){
+        let button = createTeamButton(lag.id);
+        buttonWrapper2.appendChild(button);
+    }
+    })();
+
 
 buttonWrapper.addEventListener("click", (e) =>{
 if(e.target.className == "teamButton"){
@@ -50,9 +83,7 @@ if(e.target.className == "teamButton"){
     const team = e.target.textContent;
     data = {};
     data.maltid = goalTime;
-    let url = "http://localhost:3000/deltagarelopp" + lopp + "/" + team;
-    
-    patchFetchData(url, data); //patch måltid
+    patchFetchData("http://localhost:3000/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
     
     (async function(){
         
@@ -71,13 +102,54 @@ if(e.target.className == "teamButton"){
         let paragraph = document.createElement("p");
         paragraph.textContent = `Team ${team}: ${result}`;
         resultatLista.appendChild(paragraph);
-        //postFetchData();                    //skicka beräknad lopp tid
-        //patchFetchData();       //ändra fishished to true
+        let data = {};
+        data.officielltid = result;
+        data.finished = true;
+        patchFetchData("http://localhost:3000/deltagarelopp" + "/"+ lopp + "/" + team, data);    //skicka beräknad lopp tid och finished
+             
     })();
     })();
       
 }
 });
+
+buttonWrapper2.addEventListener("click", (e) =>{
+    if(e.target.className == "teamButton"){
+        const goalTime = new Date();
+        const team = e.target.textContent;
+        data = {};
+        data.maltid = goalTime;
+        patchFetchData("http://localhost:3000/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
+        
+        (async function(){
+            
+        let teamData = await getFetchData("http://localhost:3000/deltagare" + "/"+ lopp + "/" + team) //get startgrupp
+        startgrupp = teamData.startgrupp
+        console.log(startgrupp);
+        (async function(){
+            let dataStart = await getFetchData("http://localhost:3000/starttid/" + lopp + "/" + startgrupp); //get starttid
+            console.log(dataStart);
+            let resultatLista = document.querySelector(".griditem3")
+            let goalMilliSec = Date.parse(goalTime);
+            let startTimeMilliSec = Date.parse(dataStart);
+            let result = goalMilliSec - startTimeMilliSec;
+            result = msecToSec(result)
+            result = secToHHMMSS(result);
+            let paragraph = document.createElement("p");
+            paragraph.textContent = `Team ${team}: ${result}`;
+            resultatLista.appendChild(paragraph);
+            let data = {};
+            data.officielltid = result;
+            data.finished = true;
+            patchFetchData("http://localhost:3000/deltagarelopp" + "/"+ lopp + "/" + team, data);    //skicka beräknad lopp tid och finished
+                 
+        })();
+        })();
+          
+    }
+    });
+
+
 
 
 // FUNCTIONS
