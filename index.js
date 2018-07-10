@@ -24,21 +24,21 @@ app.get("/state", function(request, res, err) {
   });
 });
 
-app.get("/starttid/:lopp", function(req, res, err) {
+app.get("/starttid/:lopp/:grupp", function(req, res, err) {
   fs.readFile("public/db.json", "utf8", function(err, data) {
     if (err) {
       throw err;
     }
     
     let response = JSON.parse(data);
-    if(req.params.lopp == "stora"){
-      console.log("Hej");
+    if(req.params.lopp == "stora" && req.params.grupp == 1){
+      
       res.send(JSON.stringify(response.starttid[0].starttid));
     }
-    else if(req.params.lopp == "mellan"){
+    else if(req.params.lopp == "stora" && req.params.grupp == 2){
       res.send(JSON.stringify(response.starttid[1].starttid));  
     }
-    else if(req.params.lopp == "lilla"){
+    else if(req.params.lopp == "mellan"){
       res.send(JSON.stringify(response.starttid[2].starttid));  
     }
 
@@ -69,86 +69,116 @@ app.get("/deltagare/:lopp", function(req, res, err) {
     else if(req.params.lopp == "mellan"){
       res.send(response.deltagareLoppMellan);  
     }
-    else if(req.params.lopp == "lilla"){
-      res.send(response.deltagareLoppLilla);  
+    
+  });
+});
+
+app.get("/deltagare/:lopp/:grupp", function(req, res, err) {
+  fs.readFile("public/db.json", "utf8", function(err, data) {
+    if (err) {
+      throw err;
     }
+    let response = JSON.parse(data);
+    if(req.params.lopp == "stora"){
+      res.send(response.deltagareLoppStora[req.params.grupp]);
+    }
+    else if(req.params.lopp == "mellan"){
+      res.send(response.deltagareLoppMellan[req.params.grupp]);  
+    }
+    
 
     
   });
 });
 
-app.patch("/starttid/:lopp", function(req, res, err) {
+app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
   fs.readFile("./public/db.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
     
-    temp.starttid.map(function(lopp) {
-      if (lopp.lopp == req.params.lopp) {
-        if (req.body.starttid) {
-          lopp.starttid = req.body.starttid;
+    for(let i = 0; i<3; i++){
+      if (temp.starttid[i].lopp == req.params.lopp) {
+        if(req.params.grupp == 1){
+          if (req.body.starttid) {
+            temp.starttid[0].starttid = req.body.starttid;
+          }
         }
+        else if(req.params.grupp == 2){
+          if (req.body.starttid) {
+            temp.starttid[1].starttid = req.body.starttid;
+          }
+        }
+        else if(req.params.grupp == "ingen"){
+          if (req.body.starttid) {
+            temp.starttid[2].starttid = req.body.starttid;
+          }
+        }
+        
       }
-    });
+    }
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
-      console.log("Saved!");
+      res.send("ok")
+    });
+  });
+
+});
+app.patch("/starttid/:lopp/", function(req, res, err) {
+  fs.readFile("./public/db.json", "utf-8", function(err, data) {
+    let temp = JSON.parse(data);
+    console.log("im here1");
+      if (req.params.lopp == "mellan") { 
+        console.log("im here2");
+          if (req.body.starttid) {
+            console.log("im here3");
+            temp.starttid[2].starttid = req.body.starttid;
+          }
+      }
+    
+    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
+      if (err) throw err;
       res.send("ok")
     });
   });
 
 });
 
-app.patch("/deltagareloppstora/:team", function(req, res, err) {
+app.patch("/deltagarelopp/:lopp/:team", function(req, res, err) {
   fs.readFile("./public/db.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
-    
+    if(req.params.lopp == "stora"){
     temp.deltagareLoppStora.map(function(team) {
-      if (team.id == req.params.team) {
+      if (team.id == req.params.team && team.finished == false) {
+        if (req.body.finished) {
+          team.finished = req.body.finished;
+        }
         if (req.body.maltid) {
           team.maltid = req.body.maltid;
         }
+        if (req.body.officielltid) {
+          team.officielltid = req.body.officielltid;
+        }     
       }
     });
+  }
+  if(req.params.lopp == "mellan"){
+    temp.deltagareLoppMellan.map(function(team) {
+      if (team.id == req.params.team && team.finished == false) {
+        if (req.body.finished) {
+          team.finished = req.body.finished;
+        }
+        if (req.body.maltid) {
+          team.maltid = req.body.maltid;
+        }
+        if (req.body.officielltid) {
+          team.officielltid = req.body.officielltid;
+        }   
+      }
+    });
+  }
+
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
       res.send("ok");
-    });
-  });
-
-});
-
-app.patch("/deltagareloppmellan/:team", function(req, res, err) {
-  fs.readFile("./public/db.json", "utf-8", function(err, data) {
-    let temp = JSON.parse(data);
-    
-    temp.deltagareLoppMellan.map(function(team) {
-      if (team.id == req.params.team) {
-        if (req.body.maltid) {
-          team.maltid = req.body.maltid;
-        }
-      }
-    });
-    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
-      if (err) throw err;
-      res.send("ok")
-    });
-  });
-
-});
-
-app.patch("/deltagarelopplilla/:team", function(req, res, err) {
-  fs.readFile("./public/db.json", "utf-8", function(err, data) {
-    let temp = JSON.parse(data);
-    
-    temp.deltagareLoppLilla.map(function(team) {
-      if (team.id == req.params.team) {
-        if (req.body.maltid) {
-          team.maltid = req.body.maltid;
-        }
-      }
-    });
-    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
-      if (err) throw err;
-      res.send("ok")
     });
   });
 

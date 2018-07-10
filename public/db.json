@@ -1,1 +1,128 @@
-{"starttid":[{"id":0,"lopp":"stora","starttid":"2018-07-09T19:09:27.891Z"},{"id":1,"lopp":"mellan","starttid":"2018-07-09T19:09:38.509Z"},{"id":2,"lopp":"lilla","starttid":"2018-07-09T19:09:47.520Z"}],"deltagareLoppStora":[{"id":0,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"stora","maltid":"2018-07-09T19:09:52.245Z"},{"id":1,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"stora","maltid":"2018-07-09T19:09:58.691Z"},{"id":2,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"stora","maltid":"2018-07-09T19:09:59.524Z"}],"deltagareLoppMellan":[{"id":0,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"mellan","maltid":"2018-07-09T19:10:07.297Z"},{"id":1,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"mellan","maltid":"2018-07-09T19:10:07.702Z"},{"id":2,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"mellan","maltid":"2018-07-09T19:10:08.096Z"}],"deltagareLoppLilla":[{"id":0,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"lilla","maltid":"2018-07-09T19:10:02.538Z"},{"id":1,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"lilla","maltid":"2018-07-09T19:10:03.000Z"},{"id":2,"deltagare1":"Carl-Axel Hallgren","deltagare2":"Johan Kyllerman","lopp":"lilla","maltid":"2018-07-09T19:10:04.124Z"}]}
+{
+  "starttid": [
+    {
+      "id": 0,
+      "lopp": "stora",
+      "startgrupp": 1,
+      "starttid": "2018-07-10T19:42:59.405Z"
+    },
+    {
+      "id": 1,
+      "lopp": "stora",
+      "startgrupp": 2,
+      "starttid": "2018-07-10T19:28:42.730Z"
+    },
+    { "id": 2, "lopp": "mellan", "starttid": "2018-07-10T19:46:03.967Z" }
+  ],
+  "deltagareLoppStora": [
+    {
+      "id": 0,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 1,
+      "finished": true,
+      "maltid": "2018-07-10T19:28:52.723Z",
+      "officielltid": "00:00:23"
+    },
+    {
+      "id": 1,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 1,
+      "finished": true,
+      "maltid": "2018-07-10T19:29:03.039Z",
+      "officielltid": "00:00:34"
+    },
+    {
+      "id": 2,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 1,
+      "finished": true,
+      "maltid": "2018-07-10T19:35:19.974Z",
+      "officielltid": "00:06:50"
+    },
+    {
+      "id": 3,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 1,
+      "finished": true,
+      "maltid": "2018-07-10T19:35:18.505Z",
+      "officielltid": "00:06:49"
+    },
+    {
+      "id": 4,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": true,
+      "maltid": "2018-07-10T19:29:05.096Z",
+      "officielltid": "00:00:22"
+    },
+    {
+      "id": 5,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": true,
+      "maltid": "2018-07-10T19:35:16.455Z",
+      "officielltid": "00:06:33"
+    },
+    {
+      "id": 6,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": true,
+      "maltid": "2018-07-10T19:35:14.660Z",
+      "officielltid": "00:06:31"
+    },
+    {
+      "id": 7,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": true,
+      "maltid": "2018-07-10T19:34:35.729Z",
+      "officielltid": "00:05:52"
+    }
+  ],
+  "deltagareLoppMellan": [
+    {
+      "id": 0,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "mellan",
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 1,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "mellan",
+      "finished": true,
+      "maltid": "2018-07-10T19:49:07.309Z",
+      "officielltid": "00:03:03"
+    },
+    {
+      "id": 2,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "mellan",
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    }
+  ]
+}
