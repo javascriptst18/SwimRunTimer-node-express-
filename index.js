@@ -24,21 +24,21 @@ app.get("/state", function(request, res, err) {
   });
 });
 
-app.get("/starttid/:lopp", function(req, res, err) {
+app.get("/starttid/:lopp/:grupp", function(req, res, err) {
   fs.readFile("public/db.json", "utf8", function(err, data) {
     if (err) {
       throw err;
     }
     
     let response = JSON.parse(data);
-    if(req.params.lopp == "stora"){
-      console.log("Hej");
+    if(req.params.lopp == "stora" && req.params.grupp == 1){
+      
       res.send(JSON.stringify(response.starttid[0].starttid));
     }
-    else if(req.params.lopp == "mellan"){
+    else if(req.params.lopp == "stora" && req.params.grupp == 2){
       res.send(JSON.stringify(response.starttid[1].starttid));  
     }
-    else if(req.params.lopp == "lilla"){
+    else if(req.params.lopp == "mellan"){
       res.send(JSON.stringify(response.starttid[2].starttid));  
     }
 
@@ -69,9 +69,23 @@ app.get("/deltagare/:lopp", function(req, res, err) {
     else if(req.params.lopp == "mellan"){
       res.send(response.deltagareLoppMellan);  
     }
-    else if(req.params.lopp == "lilla"){
-      res.send(response.deltagareLoppLilla);  
+    
+  });
+});
+
+app.get("/deltagare/:lopp/:grupp", function(req, res, err) {
+  fs.readFile("public/db.json", "utf8", function(err, data) {
+    if (err) {
+      throw err;
     }
+    let response = JSON.parse(data);
+    if(req.params.lopp == "stora"){
+      res.send(response.deltagareLoppStora[req.params.grupp]);
+    }
+    else if(req.params.lopp == "mellan"){
+      res.send(response.deltagareLoppMellan[req.params.grupp]);  
+    }
+    
 
     
   });

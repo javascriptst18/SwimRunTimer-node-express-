@@ -4,14 +4,21 @@ let raceClock = document.querySelector(".raceKlocka");
 let menyResultat = document.querySelector(".menyResultat");
 let raceSelect = document.querySelector(".raceSelect");
 
-let lopp = "mellan"
-let startgrupp = "ingen";
+let lopp = "stora"
+let startgrupp = 1;
 
 
 
 raceSelect.addEventListener("change", (e) =>{
     raceSelect = document.querySelector(".raceSelect");
-    lopp = raceSelect.value;
+    if(raceSelect.value=="stora"){
+        lopp = "stora"; 
+        startgrupp = 1; 
+    }else if(raceSelect.value=="mellan"){
+        lopp = "mellan";
+        startgrupp = "ingen";
+         
+    }
 })
 
 menyResultat.addEventListener("click", () =>{
@@ -45,21 +52,30 @@ if(e.target.className == "teamButton"){
     data.maltid = goalTime;
     let url = "http://localhost:3000/deltagarelopp" + lopp + "/" + team;
     
-    patchFetchData(url, data);
-    (async function(){
+    patchFetchData(url, data); //patch måltid
     
-    let dataStart = await getFetchData("http://localhost:3000/starttid/" + lopp);
-    let resultatLista = document.querySelector(".griditem3")
-    let goalMilliSec = Date.parse(goalTime);
-    let startTimeMilliSec = Date.parse(dataStart);
-    let result = goalMilliSec - startTimeMilliSec;
-    result = msecToSec(result)
-    result = secToHHMMSS(result);
-    let paragraph = document.createElement("p");
-    paragraph.textContent = `Team ${team}: ${result}`;
-    resultatLista.appendChild(paragraph);
-
-})();  
+    (async function(){
+        
+    let teamData = await getFetchData("http://localhost:3000/deltagare" + "/"+ lopp + "/" + team) //get startgrupp
+    startgrupp = teamData.startgrupp
+    console.log(startgrupp);
+    (async function(){
+        let dataStart = await getFetchData("http://localhost:3000/starttid/" + lopp + "/" + startgrupp); //get starttid
+        console.log(dataStart);
+        let resultatLista = document.querySelector(".griditem3")
+        let goalMilliSec = Date.parse(goalTime);
+        let startTimeMilliSec = Date.parse(dataStart);
+        let result = goalMilliSec - startTimeMilliSec;
+        result = msecToSec(result)
+        result = secToHHMMSS(result);
+        let paragraph = document.createElement("p");
+        paragraph.textContent = `Team ${team}: ${result}`;
+        resultatLista.appendChild(paragraph);
+        //postFetchData();                    //skicka beräknad lopp tid
+        //patchFetchData();       //ändra fishished to true
+    })();
+    })();
+      
 }
 });
 
@@ -103,6 +119,7 @@ function secToHHMMSS(input){
 //FETCH functions
 
 async function getFetchData(url){
+    console.log(url);
    let response = await fetch(url);
    console.log(response);
    let data = await response.json();
