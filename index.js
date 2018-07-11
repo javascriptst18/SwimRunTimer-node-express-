@@ -1,14 +1,14 @@
 const express = require("express"); // Import express package
 const app = express(); // Create our application
 const cors = require("cors");
-const PORT = 3000;//process.env.PORT; //localhost:3000
+const PORT = process.env.PORT; //localhost:3000
 const fs = require("fs");
 let id = 2;
 
 app.use(express.static("public")); // All static files are sent from the public folder
 app.use(express.json()); // So we can handle JSON-data from the user
 app.use(express.urlencoded({ extended: false })); // So we can handle form-data from the user
-app.use(cors());
+//app.use(cors());
 app.options("*", cors());
 
 app.get("/", function(request, res, err) {
