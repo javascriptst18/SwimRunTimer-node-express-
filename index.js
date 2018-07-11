@@ -12,11 +12,11 @@ app.use(cors());
 app.options("*", cors());
 
 app.get("/", function(request, res, err) {
-  res.sendFile("public/index.html");
+  res.sendFile("index.html");
 });
 
 app.get("/state", function(request, res, err) {
-  fs.readFile("public/db.json", "utf8", function(err, data) {
+  fs.readFile("public/db.json", "utf-8", function(err, data) {
     if (err) {
       throw err;
     }
@@ -25,7 +25,7 @@ app.get("/state", function(request, res, err) {
 });
 
 app.get("/starttid/:lopp/:grupp", function(req, res, err) {
-  fs.readFile("public/db.json", "utf8", function(err, data) {
+  fs.readFile("public/db.json", "utf-8", function(err, data) {
     if (err) {
       throw err;
     }
@@ -47,7 +47,7 @@ app.get("/starttid/:lopp/:grupp", function(req, res, err) {
 });
 
 app.get("/deltagare", function(request, res, err) {
-  fs.readFile("public/db.json", "utf8", function(err, data) {
+  fs.readFile("public/db.json", "utf-8", function(err, data) {
     if (err) {
       throw err;
     }
@@ -58,7 +58,7 @@ app.get("/deltagare", function(request, res, err) {
 });
 
 app.get("/deltagare/:lopp", function(req, res, err) {
-  fs.readFile("public/db.json", "utf8", function(err, data) {
+  fs.readFile("public/db.json", "utf-8", function(err, data) {
     if (err) {
       throw err;
     }
@@ -74,7 +74,7 @@ app.get("/deltagare/:lopp", function(req, res, err) {
 });
 
 app.get("/deltagare/:lopp/:grupp", function(req, res, err) {
-  fs.readFile("public/db.json", "utf8", function(err, data) {
+  fs.readFile("public/db.json", "utf-8", function(err, data) {
     if (err) {
       throw err;
     }
