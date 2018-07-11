@@ -1,0 +1,128 @@
+{
+  "starttid": [
+    {
+      "id": 0,
+      "lopp": "stora",
+      "startgrupp": 1,
+      "starttid": ""
+    },
+    {
+      "id": 1,
+      "lopp": "stora",
+      "startgrupp": 2,
+      "starttid": ""
+    },
+    { "id": 2, "lopp": "mellan", "starttid": "" }
+  ],
+  "deltagareLoppStora": [
+    {
+      "id": 0,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 1,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 1,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 1,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 2,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 1,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 3,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 1,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 4,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 5,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 6,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 7,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    }
+  ],
+  "deltagareLoppMellan": [
+    {
+      "id": 0,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "mellan",
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 1,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "mellan",
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 2,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "mellan",
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    }
+  ]
+}
