@@ -12,7 +12,7 @@ app.use(cors());
 app.options("*", cors());
 
 app.get("/", function(request, res, err) {
-  res.sendFile("index.html");
+  res.sendFile("public/index.html");
 });
 
 app.get("/state", function(request, res, err) {
