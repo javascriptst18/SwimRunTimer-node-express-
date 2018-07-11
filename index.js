@@ -1,7 +1,7 @@
 const express = require("express"); // Import express package
 const app = express(); // Create our application
 const cors = require("cors");
-const PORT = 3000; //localhost:3000
+const PORT = process.env.PORT; //localhost:3000
 const fs = require("fs");
 let id = 2;
 
@@ -12,7 +12,7 @@ app.use(cors());
 app.options("*", cors());
 
 app.get("/", function(request, res, err) {
-  res.sendFile("index.html");
+  res.sendFile("public/index.html");
 });
 
 app.get("/state", function(request, res, err) {
@@ -204,15 +204,11 @@ app.post("/deltagare", function(req, res, err) {
 
 
 
-app.delete("/todos/:id", function(req, res, err) {
-  fs.readFile("./public/db.json", "utf-8", function(err, data) {
+app.delete("/reset", function(req, res, err) {
+  fs.readFile("./public/backup.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
-    //let replacedData = [...temp];
-    let filter = temp.filter(function(todos) {
-      return todos.id != req.params.id;
-    });
-
-    fs.writeFile("./public/db.json", JSON.stringify(filter), function(err) {
+    
+    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
       console.log("Saved!");
       res.send("ok")
