@@ -125,10 +125,8 @@ buttonWrapper2.addEventListener("click", (e) =>{
             
         let teamData = await getFetchData("/deltagare" + "/"+ lopp + "/" + team) //get startgrupp
         startgrupp = teamData.startgrupp
-        console.log(startgrupp);
         (async function(){
             let dataStart = await getFetchData("/starttid/" + lopp + "/" + startgrupp); //get starttid
-            console.log(dataStart);
             let resultatLista = document.querySelector(".griditem3")
             let goalMilliSec = Date.parse(goalTime);
             let startTimeMilliSec = Date.parse(dataStart);
