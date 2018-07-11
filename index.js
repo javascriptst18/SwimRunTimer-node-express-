@@ -1,7 +1,7 @@
 const express = require("express"); // Import express package
 const app = express(); // Create our application
 const cors = require("cors");
-const PORT = process.env.PORT; //localhost:3000
+const PORT = 3000;//process.env.PORT; //localhost:3000
 const fs = require("fs");
 let id = 2;
 
@@ -20,7 +20,7 @@ app.get("/state", function(request, res, err) {
     if (err) {
       throw err;
     }
-    res.send(JSON.stringify(data));
+    res.send(data);
   });
 });
 

@@ -50,35 +50,35 @@ h1{
 .hidden{
     display: none;
 }
+.flexMain{
+    display: flex;
+    width: 100%;
+    
+}
 
 .gridWrapperMain{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100px 1fr 50px;
+    
     height: 100%;
 }
 .griditem1{
-    grid-column-start: 1;
-    grid-column-end: 6;
+    
     display: flex;
     justify-content: space-between;
 
 }
 .griditem2{
-    grid-column-start: 1;
-    grid-column-end: 5;
+    
     min-height: 100vh;
     padding: 15px 10px 15px 10px;
     display:flex;
     flex-direction: column;
+    width: 80%;
 }
 .griditem3{
-    grid-column-start: 5;
-    grid-column-end: 6;
+    width: 20%;
 }
 .griditem4{
-    grid-column-start: 1;
-    grid-column-end: 6;
+   
     text-align: right;
     color: lightgray;
     display: flex;
