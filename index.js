@@ -20,7 +20,7 @@ app.get("/state", function(request, res, err) {
     if (err) {
       throw err;
     }
-    res.send(data);
+    res.send(JSON.stringify(data));
   });
 });
 
@@ -53,7 +53,7 @@ app.get("/deltagare", function(request, res, err) {
     }
     let response = JSON.parse(data);
 
-    res.send(response.deltagare);
+    res.send(JSON.stringify(response.deltagare));
   });
 });
 
@@ -64,10 +64,10 @@ app.get("/deltagare/:lopp", function(req, res, err) {
     }
     let response = JSON.parse(data);
     if(req.params.lopp == "stora"){
-      res.send(response.deltagareLoppStora);
+      res.send(JSON.stringify(response.deltagareLoppStora));
     }
     else if(req.params.lopp == "mellan"){
-      res.send(response.deltagareLoppMellan);  
+      res.send(JSON.stringify(response.deltagareLoppMellan));  
     }
     
   });
@@ -80,10 +80,10 @@ app.get("/deltagare/:lopp/:grupp", function(req, res, err) {
     }
     let response = JSON.parse(data);
     if(req.params.lopp == "stora"){
-      res.send(response.deltagareLoppStora[req.params.grupp]);
+      res.send(JSON.stringify(response.deltagareLoppStora[req.params.grupp]));
     }
     else if(req.params.lopp == "mellan"){
-      res.send(response.deltagareLoppMellan[req.params.grupp]);  
+      res.send(JSON.stringify(response.deltagareLoppMellan[req.params.grupp]));  
     }
     
 
