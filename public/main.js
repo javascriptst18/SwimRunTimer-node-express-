@@ -81,14 +81,17 @@ buttonWrapper.addEventListener("click", e => {
           "/deltagare" + "/" + lopp + "/" + team
         ); //get startgrupp
         console.log("2");
+        if(lopp == "stora"){
         startgrupp = teamData.startgrupp;
-
+        }else{
+            startgrupp = "ingen"
+        }
         await (async function() {
           let dataStart = await getFetchData(
             "/starttid/" + lopp + "/" + startgrupp
           ); //get starttid
           console.log("3");
-          let resultatLista = document.querySelector(".griditem3");
+          let resultatLista = document.querySelector(".resLanga");
           let goalMilliSec = Date.parse(goalTime);
           let startTimeMilliSec = Date.parse(dataStart);
           let result = goalMilliSec - startTimeMilliSec;
@@ -110,36 +113,49 @@ buttonWrapper.addEventListener("click", e => {
 });
 
 buttonWrapper2.addEventListener("click", e => {
-  if (e.target.className == "teamButton") {
-    const goalTime = new Date();
-    const team = e.target.textContent;
-    data = {};
-    data.maltid = goalTime;
-    patchFetchData("/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
-
-    (async function() {
-      let teamData = await getFetchData("/deltagare" + "/" + lopp + "/" + team); //get startgrupp
-      startgrupp = teamData.startgrupp(async function() {
-        let dataStart = await getFetchData(
-          "/starttid/" + lopp + "/" + startgrupp
-        ); //get starttid
-        let resultatLista = document.querySelector(".griditem3");
-        let goalMilliSec = Date.parse(goalTime);
-        let startTimeMilliSec = Date.parse(dataStart);
-        let result = goalMilliSec - startTimeMilliSec;
-        result = msecToSec(result);
-        result = secToHHMMSS(result);
-        let paragraph = document.createElement("p");
-        paragraph.textContent = `Team ${team}: ${result}`;
-        resultatLista.appendChild(paragraph);
-        let data = {};
-        data.officielltid = result;
-        data.finished = true;
-        patchFetchData("/deltagarelopp" + "/" + lopp + "/" + team, data); //skicka beräknad lopp tid och finished
+    if (e.target.className == "teamButton") {
+      (async function() {
+        const goalTime = new Date();
+        const team = e.target.textContent;
+        data = {};
+        data.maltid = goalTime;
+        await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
+        console.log("1");
+        await (async function() {
+          let teamData = await getFetchData(
+            "/deltagare" + "/" + lopp + "/" + team
+          ); //get startgrupp
+          console.log("2");
+          if(lopp == "stora"){
+          startgrupp = teamData.startgrupp;
+          }else{
+              startgrupp = "ingen"
+          }
+          await (async function() {
+            let dataStart = await getFetchData(
+              "/starttid/" + lopp + "/" + startgrupp
+            ); //get starttid
+            console.log("3");
+            let resultatLista = document.querySelector(".resMellan");
+            let goalMilliSec = Date.parse(goalTime);
+            let startTimeMilliSec = Date.parse(dataStart);
+            let result = goalMilliSec - startTimeMilliSec;
+            result = msecToSec(result);
+            result = secToHHMMSS(result);
+            let paragraph = document.createElement("p");
+            paragraph.textContent = `Team ${team}: ${result}`;
+            resultatLista.appendChild(paragraph);
+            let data = {};
+            data.officielltid = result;
+            data.finished = true;
+            await patchFetchData("/deltagarelopp" + "/" + lopp + "/" + team, data);
+            console.log("4");
+            console.log("ok"); //skicka beräknad lopp tid och finished
+          })();
+        })();
       })();
-    })();
-  }
-});
+    }
+  });
 
 // FUNCTIONS
 
