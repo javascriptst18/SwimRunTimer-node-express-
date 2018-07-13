@@ -1,7 +1,7 @@
 const express = require("express"); // Import express package
 const app = express(); // Create our application
 
-const PORT = 3000;//process.env.PORT; //localhost:3000
+const PORT = process.env.PORT; //localhost:3000
 const fs = require("fs");
 
 
