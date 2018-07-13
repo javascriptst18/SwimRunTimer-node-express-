@@ -1,7 +1,7 @@
 const express = require("express"); // Import express package
 const app = express(); // Create our application
 
-const PORT = process.env.PORT; //localhost:3000
+const PORT = 3000;//process.env.PORT; //localhost:3000
 const fs = require("fs");
 
 
@@ -55,6 +55,39 @@ app.get("/deltagare", function(request, res, err) {
     res.send(JSON.stringify(response.deltagare));
   });
 });
+
+
+app.get("/rankadetider/:lopp", function(request, res, err) {
+  fs.readFile("public/db.json", "utf-8", function(err, data) {
+    if (err) {
+      throw err;
+    }
+    let response = JSON.parse(data);
+
+    if(request.params.lopp == "stora"){
+      response = response.deltagareLoppStora;
+    }else{
+      response = response.deltagareLoppMellan;
+    }
+    
+    let filterResponse = response.filter(function(team){ 
+      return team.officielltid;
+    });
+    let orderFilterResponse = filterResponse.sort(function(a,b){
+      
+      a = a.officielltid.split(":");
+      b = b.officielltid.split(":");
+      a = a[0] * 60 * 60 + a[1] * 60 + a[2];
+      b = b[0] * 60 * 60 + b[1] * 60 + b[2];
+      return a -b;
+    })
+    
+    res.send(JSON.stringify(orderFilterResponse));
+  });
+});
+
+
+
 
 app.get("/deltagare/:lopp", function(req, res, err) {
   fs.readFile("public/db.json", "utf-8", function(err, data) {
