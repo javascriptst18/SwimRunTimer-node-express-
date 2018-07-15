@@ -161,3 +161,28 @@ min-height: 100%;
     min-height: 100vh;
 
 }
+
+@media (max-width: 780px){
+    .griditem1{
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+
+
+@media (max-width: 550px){
+    .flexMain{
+        
+        flex-direction: column;
+        
+        
+    }
+    .griditem2{
+        width: 100%;
+    }
+    .flexwrapperMeny{
+        justify-content: center;
+        padding-left: 0;
+    }
+}
