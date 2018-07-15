@@ -7,7 +7,7 @@
 
 header{
     
-    background-color: #00c2db;
+    background-color: #0091a9;
     padding-left: 20px;
 }
 footer{
@@ -30,6 +30,14 @@ header ul{
 h1{
     display: inline-block;
     padding: auto 0px auto 30px;
+}
+a {
+    text-decoration: none;
+    color:#0091a9;
+    height: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 0.4rem 0.7rem;
 }
 
 
@@ -70,30 +78,40 @@ h1{
     
     min-height: 100vh;
     padding: 15px 10px 15px 10px;
+    background-color: #00c2db;
     display:flex;
     flex-direction: column;
     width: 80%;
 }
 .griditem3{
     width: 20%;
+    background-color:white;
 }
 .griditem4{
    
     text-align: right;
-    color: lightgray;
+    background-color: #fafafa;
+    color: white;
     display: flex;
     flex-wrap: wrap;
 }
 .raceKlocka1, .raceKlocka2, .raceKlocka3{
     width: 50%;
     height: 90%;
-    border-radius: 10px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-weight: bold;
+    background-color: white;
+    color: #00c2db;
 }
 .clock1, .clock2, .clock3{
     width:50%;
-    font-size: 1.8em;
+    font-size: 2.2em;
     align-self: center;
-    text-align: center;   
+    text-align: center; 
+    color: white;  
 
 }
 .clock3{
@@ -121,14 +139,16 @@ min-height: 100%;
 }
 
 .teamButton{
-    width: 50px;
+    width: 65px;
     height: 50px;
-    margin: 30px 0px 0px 20px;
-    border-radius: 5px;
+    margin: 30px 0px 0px 15px;
+    border: 0;
+    border-radius: 3px;
+    outline:none;
     font-size: 2rem;
     box-shadow: 0px 3px 10px 2px #757D75;
-    color: white;
-    background-color: #00c2db;
+    color: #00c2db;
+    background-color: white;
 
 }
 .meny{
