@@ -144,6 +144,7 @@ buttonWrapper.addEventListener("click", e => {
     (async function() {
       const goalTime = new Date();
       const team = e.target.textContent;
+      e.target.style.backgroundColor = "#94d7e0";
       let startgrupp;
       data = {};
       data.maltid = goalTime;
