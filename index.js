@@ -167,11 +167,11 @@ app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
 app.patch("/starttid/:lopp/", function(req, res, err) {
   fs.readFile("./public/db.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
-    console.log("im here1");
+    
       if (req.params.lopp == "mellan") { 
-        console.log("im here2");
+        
           if (req.body.starttid) {
-            console.log("im here3");
+            
             temp.starttid[2].starttid = req.body.starttid;
           }
       }
@@ -238,7 +238,7 @@ app.post("/deltagare", function(req, res, err) {
 
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
-      console.log("Saved!");
+      
       res.send("ok")
     });
   });
@@ -252,7 +252,7 @@ app.delete("/reset", function(req, res, err) {
     
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
-      console.log("Saved!");
+      
       res.send("ok")
     });
   });

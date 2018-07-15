@@ -327,9 +327,9 @@ function secToHHMMSS(input) {
 //FETCH functions
 
 async function getFetchData(url) {
-  console.log(url);
+  
   let response = await fetch(url);
-  console.log(response);
+  
   let data = await response.json();
   return data;
 }
