@@ -112,10 +112,19 @@ app.get("/deltagare/:lopp/:grupp", function(req, res, err) {
     }
     let response = JSON.parse(data);
     if(req.params.lopp == "stora"){
-      res.send(JSON.stringify(response.deltagareLoppStora[req.params.grupp]));
+     let answer = response.deltagareLoppStora.filter(function(team){
+      return req.params.grupp == team.id;
+      });
+
+      res.send(JSON.stringify(answer[0]));
+      //res.send(JSON.stringify(response.deltagareLoppStora[req.params.grupp]));
     }
     else if(req.params.lopp == "mellan"){
-      res.send(JSON.stringify(response.deltagareLoppMellan[req.params.grupp]));  
+      let answer = response.deltagareLoppMellan.filter(function(team){
+        return req.params.grupp == team.id;
+        });
+
+        res.send(JSON.stringify(answer[0])); 
     }
     
 

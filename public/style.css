@@ -85,9 +85,19 @@ h1{
     flex-wrap: wrap;
 }
 .raceKlocka1, .raceKlocka2, .raceKlocka3{
-    width: 30%;
+    width: 50%;
     height: 90%;
     border-radius: 10px;
+}
+.clock1, .clock2, .clock3{
+    width:50%;
+    font-size: 1.8em;
+    align-self: center;
+    text-align: center;   
+
+}
+.clock3{
+    width:100%;
 }
 .flexwrapperMeny{
     display: inline-flex;
@@ -102,6 +112,9 @@ min-height: 100%;
     width: 100%;
     align-self: center;
     height: 100px;
+    display: flex;
+    
+    
 }
 .hidden{
     display:none;

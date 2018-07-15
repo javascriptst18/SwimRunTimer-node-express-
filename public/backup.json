@@ -94,6 +94,46 @@
       "finished": false,
       "maltid": "",
       "officielltid": ""
+    },
+    {
+      "id": 8,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 9,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 11,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
+    },
+    {
+      "id": 13,
+      "deltagare1": "Carl-Axel Hallgren",
+      "deltagare2": "Johan Kyllerman",
+      "lopp": "stora",
+      "startgrupp": 2,
+      "finished": false,
+      "maltid": "",
+      "officielltid": ""
     }
   ],
   "deltagareLoppMellan": [
