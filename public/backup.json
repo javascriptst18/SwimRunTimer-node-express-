@@ -1,8 +1,8 @@
 {
   "starttid": [
-    { "id": 0, "lopp": "stora", "startgrupp": 1, "starttid": "" },
-    { "id": 1, "lopp": "stora", "startgrupp": 2, "starttid": "" },
-    { "id": 2, "lopp": "mellan", "starttid": "" }
+    { "id": 0, "lopp": "stora", "startgrupp": 1, "starttid": "", "started": false },
+    { "id": 1, "lopp": "stora", "startgrupp": 2, "starttid": "", "started": false },
+    { "id": 2, "lopp": "mellan", "starttid": "", "started": false }
   ],
   "deltagareLoppStora": [
     {

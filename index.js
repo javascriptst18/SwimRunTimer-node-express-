@@ -138,19 +138,23 @@ app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
     
     for(let i = 0; i<3; i++){
       if (temp.starttid[i].lopp == req.params.lopp) {
-        if(req.params.grupp == 1){
+        console.log("im in");
+        if(req.params.grupp == 1 && temp.starttid[0].started === false){
           if (req.body.starttid) {
             temp.starttid[0].starttid = req.body.starttid;
+            temp.starttid[0].started = true;
           }
         }
-        else if(req.params.grupp == 2){
+        else if(req.params.grupp == 2 && temp.starttid[1].started === false){
           if (req.body.starttid) {
             temp.starttid[1].starttid = req.body.starttid;
+            temp.starttid[1].started = true;
           }
         }
-        else if(req.params.grupp == "ingen"){
+        else if(req.params.grupp == "ingen" && temp.starttid[2].started === false){
           if (req.body.starttid) {
             temp.starttid[2].starttid = req.body.starttid;
+            temp.starttid[2].started = true;
           }
         }
         
