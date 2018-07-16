@@ -14,6 +14,9 @@ let counter2 = 0;
 let counter3 = 0;
 let lopp = "stora";
 let startgrupp = 1;
+let raceStartTime1;
+let raceStartTime2;
+let raceStartTime3;
 
 menyHem.addEventListener("click", () => {
   lopp = "stora";
@@ -44,29 +47,30 @@ menyResultat.addEventListener("click", e => {
   (async function() {
     let rankedTimesLanga = await getFetchData(`/rankadetider/stora`);
     let rankedTimesMellan = await getFetchData(`/rankadetider/mellan`);
-
+    let fragment = document.createDocumentFragment();
     let headline1 = document.createElement("h3");
     headline1.textContent = "Långa Loppet Tider";
-    resultatDiv.appendChild(headline1);
+    fragment.appendChild(headline1);
 
     rankedTimesLanga.map(function(team) {
       let paragraph = document.createElement("p");
       paragraph.textContent = `Team ${team.id}: ${
         team.officielltid
       } deltagare ${team.deltagare1} och ${team.deltagare2}`;
-      resultatDiv.appendChild(paragraph);
+      fragment.appendChild(paragraph);
     });
     let headline2 = document.createElement("h3");
     headline2.textContent = "Mellan Loppet Tider";
-    resultatDiv.appendChild(headline2);
+    fragment.appendChild(headline2);
 
     rankedTimesMellan.map(function(team) {
       let paragraph = document.createElement("p");
       paragraph.textContent = `Team ${team.id}: ${
         team.officielltid
       } deltagare ${team.deltagare1} och ${team.deltagare2}`;
-      resultatDiv.appendChild(paragraph);
+      fragment.appendChild(paragraph);
     });
+    resultatDiv.appendChild(fragment);
     raceSelect.value = "Långa";
   })();
 });
@@ -86,10 +90,10 @@ raceSelect.addEventListener("change", e => {
 });
 
 raceClock1.addEventListener("click", () => {
-  const raceStartTime = new Date();
+  raceStartTime1 = new Date();
   let data = {};
 
-  data.starttid = raceStartTime;
+  data.starttid = raceStartTime1;
   let div = document.createElement("div");
   div.classList.add("clock1");
   raceClock1.insertAdjacentElement("afterend",div);
@@ -99,24 +103,24 @@ raceClock1.addEventListener("click", () => {
   startWatch1();
 });
 raceClock2.addEventListener("click", () => {
-  const raceStartTime = new Date();
+  raceStartTime2 = new Date();
   let data = {};
   let div = document.createElement("div");
   div.classList.add("clock2");
   raceClock2.insertAdjacentElement("afterend",div);
-  data.starttid = raceStartTime;
+  data.starttid = raceStartTime2;
   let parent = raceClock2.parentElement;
   parent.removeChild(raceClock2);
   patchFetchData(`/starttid/${lopp}/2 `, data);
   startWatch2();
 });
 raceClock3.addEventListener("click", () => {
-  const raceStartTime = new Date();
+  raceStartTime3 = new Date();
   let data = {};
   let div = document.createElement("div");
   div.classList.add("clock3");
   raceClock3.insertAdjacentElement("afterend",div);
-  data.starttid = raceStartTime;
+  data.starttid = raceStartTime3;
   let parent = raceClock3.parentElement;
   parent.removeChild(raceClock3);
   patchFetchData(`/starttid/mellan/ingen`, data);
@@ -125,18 +129,22 @@ raceClock3.addEventListener("click", () => {
 
 (async function() {
   const deltagare = await getFetchData("/deltagare/stora");
+  let fragment = document.createDocumentFragment();
   for (let lag of deltagare) {
     let button = createTeamButton(lag.id);
-    buttonWrapper.appendChild(button);
+    fragment.appendChild(button);
   }
+  buttonWrapper.appendChild(fragment);
 })();
 
 (async function() {
   const deltagare = await getFetchData("/deltagare/mellan");
+  let fragment = document.createDocumentFragment();
   for (let lag of deltagare) {
     let button = createTeamButton(lag.id);
-    buttonWrapper2.appendChild(button);
+    fragment.appendChild(button);
   }
+  buttonWrapper2.appendChild(fragment);
 })();
 
 buttonWrapper.addEventListener("click", e => {
@@ -201,6 +209,7 @@ buttonWrapper2.addEventListener("click", e => {
         (async function() {
           const goalTime = new Date();
           const team = e.target.textContent;
+          e.target.style.backgroundColor = "#94d7e0";
           let startgrupp;
           data = {};
           data.maltid = goalTime;
@@ -255,8 +264,9 @@ buttonWrapper2.addEventListener("click", e => {
 
 function displayTime1() {
 
-   
-  document.querySelector(".clock1").innerHTML = (moment().hour(0).minute(0).second(counter1++).format("HH : mm : ss"));
+  let time = secToHHMMSS((Date.parse(new Date()) - Date.parse(raceStartTime1))/1000)
+  document.querySelector(".clock1").innerHTML = time;
+
 }
 
 function startWatch1() {
@@ -268,8 +278,8 @@ function stopWatch1() {
 }
 function displayTime2() {
 
-   
-    document.querySelector(".clock2").innerHTML = (moment().hour(0).minute(0).second(counter2++).format("HH : mm : ss"));
+    let time = secToHHMMSS((Date.parse(new Date()) - Date.parse(raceStartTime2))/1000)
+    document.querySelector(".clock2").innerHTML = time;
   }
   
   function startWatch2() {
@@ -281,8 +291,8 @@ function displayTime2() {
   }
   function displayTime3() {
 
-   
-    document.querySelector(".clock3").innerHTML = (moment().hour(0).minute(0).second(counter3++).format("HH : mm : ss"));
+    let time = secToHHMMSS((Date.parse(new Date()) - Date.parse(raceStartTime3))/1000)
+    document.querySelector(".clock3").innerHTML = time;
   }
   
   function startWatch3() {
