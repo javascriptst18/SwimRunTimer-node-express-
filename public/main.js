@@ -157,9 +157,9 @@ menyResultat.addEventListener("click", e => {
         headline1.textContent = "Långa Loppet Tider";
         divStoraTotal.appendChild(headline1);
 
-        rankedTimesLanga.map(function(team) {
+        rankedTimesLanga.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divStoraTotal.appendChild(paragraph);
@@ -180,9 +180,9 @@ menyResultat.addEventListener("click", e => {
             return team.klass == "Herr";
         })
 
-        filterStoraHerr.map(function(team) {
+        filterStoraHerr.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divStoraHerr.appendChild(paragraph);
@@ -202,9 +202,9 @@ menyResultat.addEventListener("click", e => {
             return team.klass == "Dam";
         })
 
-        filterStoraDam.map(function(team) {
+        filterStoraDam.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divStoraDam.appendChild(paragraph);
@@ -224,9 +224,9 @@ menyResultat.addEventListener("click", e => {
             return team.klass == "Mixed";
         })
 
-        filterStoraMix.map(function(team) {
+        filterStoraMix.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divStoraMix.appendChild(paragraph);
@@ -245,9 +245,9 @@ menyResultat.addEventListener("click", e => {
         headline5.textContent = "Mellan Loppet Tider";
         divMellanTotal.appendChild(headline5);
         
-        rankedTimesMellan.map(function(team) {
+        rankedTimesMellan.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divMellanTotal.appendChild(paragraph);
@@ -266,9 +266,9 @@ menyResultat.addEventListener("click", e => {
             return team.klass == "Herr";
         })
 
-        filterMellanHerr.map(function(team) {
+        filterMellanHerr.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divMellanHerr.appendChild(paragraph);
@@ -287,9 +287,9 @@ menyResultat.addEventListener("click", e => {
             return team.klass == "Dam";
         })
         
-        filterMellanDam.map(function(team) {
+        filterMellanDam.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divMellanDam.appendChild(paragraph);
@@ -309,9 +309,9 @@ menyResultat.addEventListener("click", e => {
             return team.klass == "Mixed";
         })
         
-        filterMellanMix.map(function(team) {
+        filterMellanMix.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divMellanMix.appendChild(paragraph);
@@ -363,9 +363,10 @@ uppdatera.addEventListener("click", e => {
         headline1.textContent = "Långa Loppet Tider";
         divStoraTotal.appendChild(headline1);
 
-        rankedTimesLanga.map(function(team) {
+        rankedTimesLanga.map(function(team,i) {
+          
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divStoraTotal.appendChild(paragraph);
@@ -389,9 +390,9 @@ uppdatera.addEventListener("click", e => {
             return team.klass == "Herr";
         })
 
-        filterStoraHerr.map(function(team) {
+        filterStoraHerr.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divStoraHerr.appendChild(paragraph);
@@ -414,9 +415,9 @@ uppdatera.addEventListener("click", e => {
             return team.klass == "Dam";
         })
 
-        filterStoraDam.map(function(team) {
+        filterStoraDam.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divStoraDam.appendChild(paragraph);
@@ -438,9 +439,9 @@ uppdatera.addEventListener("click", e => {
             return team.klass == "Mixed";
         })
 
-        filterStoraMix.map(function(team) {
+        filterStoraMix.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divStoraMix.appendChild(paragraph);
@@ -461,9 +462,9 @@ uppdatera.addEventListener("click", e => {
         headline5.textContent = "Mellan Loppet Tider";
         divMellanTotal.appendChild(headline5);
         
-        rankedTimesMellan.map(function(team) {
+        rankedTimesMellan.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divMellanTotal.appendChild(paragraph);
@@ -485,9 +486,9 @@ uppdatera.addEventListener("click", e => {
             return team.klass == "Herr";
         })
 
-        filterMellanHerr.map(function(team) {
+        filterMellanHerr.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divMellanHerr.appendChild(paragraph);
@@ -509,9 +510,9 @@ uppdatera.addEventListener("click", e => {
             return team.klass == "Dam";
         })
         
-        filterMellanDam.map(function(team) {
+        filterMellanDam.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divMellanDam.appendChild(paragraph);
@@ -533,9 +534,9 @@ uppdatera.addEventListener("click", e => {
         let filterMellanMix = rankedTimesMellan.filter(function(team){
             return team.klass == "Mixed";
         })
-        filterMellanMix.map(function(team) {
+        filterMellanMix.map(function(team,i) {
           let paragraph = document.createElement("p");
-          paragraph.textContent = `Team ${team.id}: ${
+          paragraph.textContent = `${i+1}: Team ${team.id}: ${
             team.officielltid
           } deltagare ${team.deltagare1} och ${team.deltagare2}`;
           divMellanMix.appendChild(paragraph);
