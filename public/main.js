@@ -8,6 +8,7 @@ let raceSelect = document.querySelector(".raceSelect");
 let menyHem = document.querySelector(".menyHem");
 let mellan = document.querySelector(".mellan");
 let langa = document.querySelector(".langa");
+let uppdatera = document.querySelector(".uppdatera");
 
 let counter1 = 0;
 let counter2 = 0;
@@ -30,6 +31,11 @@ menyResultat.addEventListener("click", e => {
   mellan = document.querySelector(".mellan");
   langa = document.querySelector(".langa");
   let resultatDiv = document.querySelector(".resultat");
+  if(document.querySelector(".resWrapper")){
+    let resWrapper = document.querySelector(".resWrapper");
+    resultatDiv.removeChild(resWrapper);
+  }
+  let resWrapper = document.querySelector(".resWrapper");
   if (mellan.classList.contains("hidden")) {
   } else {
     mellan.classList.add("hidden");
@@ -38,42 +44,365 @@ menyResultat.addEventListener("click", e => {
   } else {
     langa.classList.add("hidden");
   }
-  while (resultatDiv.hasChildNodes()) {
-    let lastChild = resultatDiv.lastChild;
-    resultatDiv.removeChild(lastChild);
-  }
+  
   resultatDiv.classList.remove("hidden");
 
   (async function() {
     let rankedTimesLanga = await getFetchData(`/rankadetider/stora`);
-    let rankedTimesMellan = await getFetchData(`/rankadetider/mellan`);
-    let fragment = document.createDocumentFragment();
-    let headline1 = document.createElement("h3");
-    headline1.textContent = "Långa Loppet Tider";
-    fragment.appendChild(headline1);
+        let rankedTimesMellan = await getFetchData(`/rankadetider/mellan`);
+        let div = document.createElement("div");
+        div.classList.add("resWrapper");
+        let divStora = document.createElement("div");
+        let divMellan = document.createElement("div");
+        
+       
 
-    rankedTimesLanga.map(function(team) {
-      let paragraph = document.createElement("p");
-      paragraph.textContent = `Team ${team.id}: ${
-        team.officielltid
-      } deltagare ${team.deltagare1} och ${team.deltagare2}`;
-      fragment.appendChild(paragraph);
-    });
-    let headline2 = document.createElement("h3");
-    headline2.textContent = "Mellan Loppet Tider";
-    fragment.appendChild(headline2);
+            //STORA
 
-    rankedTimesMellan.map(function(team) {
-      let paragraph = document.createElement("p");
-      paragraph.textContent = `Team ${team.id}: ${
-        team.officielltid
-      } deltagare ${team.deltagare1} och ${team.deltagare2}`;
-      fragment.appendChild(paragraph);
+        let headline1 = document.createElement("h3");
+        let divStoraTotal = document.createElement("div");
+        headline1.textContent = "Långa Loppet Tider";
+        divStoraTotal.appendChild(headline1);
+
+        rankedTimesLanga.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divStoraTotal.appendChild(paragraph);
+        });
+
+        divStora.appendChild(divStoraTotal);
+
+        //STORA HERR
+
+        let headline2 = document.createElement("h3");
+        let divStoraHerr = document.createElement("div");
+        headline2.textContent = "Långa Loppet Tider Klass: Herr";
+        divStoraHerr.appendChild(headline2);
+
+        let filterStoraHerr = rankedTimesLanga.filter(function(team){
+            return team.klass == "Herr";
+        })
+
+        filterStoraHerr.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divStoraHerr.appendChild(paragraph);
+        });
+        divStora.appendChild(divStoraHerr);
+
+        //STORA DAM
+
+        let headline3 = document.createElement("h3");
+        let divStoraDam = document.createElement("div");
+        headline3.textContent = "Långa Loppet Tider Klass: Dam";
+        divStoraDam.appendChild(headline3);
+
+        let filterStoraDam = rankedTimesLanga.filter(function(team){
+            return team.klass == "Dam";
+        })
+
+        filterStoraDam.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divStoraDam.appendChild(paragraph);
+        });
+        divStora.appendChild(divStoraDam);
+
+        //STORA MIX
+
+        let headline4 = document.createElement("h3");
+        let divStoraMix = document.createElement("div");
+        headline4.textContent = "Långa Loppet Tider Klass: Mix";
+        divStoraMix.appendChild(headline4);
+
+        let filterStoraMix = rankedTimesLanga.filter(function(team){
+            return team.klass == "Mixed";
+        })
+
+        filterStoraMix.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divStoraMix.appendChild(paragraph);
+        });
+        divStora.appendChild(divStoraMix);
+
+
+
+        //MELLAN
+
+        let headline5 = document.createElement("h3");
+        let divMellanTotal = document.createElement("div");
+        headline5.textContent = "Mellan Loppet Tider";
+        divMellanTotal.appendChild(headline5);
+        
+        rankedTimesMellan.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divMellanTotal.appendChild(paragraph);
+        });
+        divMellan.appendChild(divMellanTotal);
+
+            //MELLAN HERR
+
+        let headline6 = document.createElement("h3");
+        let divMellanHerr = document.createElement("div");
+        headline6.textContent = "Mellan Loppet Tider Klass: Herr";
+        divMellanHerr.appendChild(headline6);
+        
+        let filterMellanHerr = rankedTimesMellan.filter(function(team){
+            return team.klass == "Herr";
+        })
+
+        filterMellanHerr.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divMellanHerr.appendChild(paragraph);
+        });
+        divMellan.appendChild(divMellanHerr);
+        
+            //MELLAN DAM
+
+        let headline7 = document.createElement("h3");
+        let divMellanDam = document.createElement("div");
+        headline7.textContent = "Mellan Loppet Tider Klass: Dam";
+        divMellanDam.appendChild(headline7);
+
+        let filterMellanDam = rankedTimesMellan.filter(function(team){
+            return team.klass == "Dam";
+        })
+        
+        filterMellanDam.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divMellanDam.appendChild(paragraph);
+        });
+        divMellan.appendChild(divMellanDam);
+
+
+        //MELLAN MIX
+
+        let headline8 = document.createElement("h3");
+        let divMellanMix = document.createElement("div");
+        headline8.textContent = "Mellan Loppet Tider Klass: Mix";
+        divMellanMix.appendChild(headline8);
+
+        let filterMellanMix = rankedTimesMellan.filter(function(team){
+            return team.klass == "Mixed";
+        })
+        
+        filterMellanMix.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divMellanMix.appendChild(paragraph);
+        });
+        divMellan.appendChild(divMellanMix);
+
+//APPEND
+
+        div.appendChild(divStora);
+        div.appendChild(divMellan);
+        resultatDiv.appendChild(div);
+        raceSelect.value = "Långa";
+      })();
     });
-    resultatDiv.appendChild(fragment);
-    raceSelect.value = "Långa";
-  })();
-});
+
+uppdatera.addEventListener("click", e => {
+    let resultatDiv = document.querySelector(".resultat");
+    if(document.querySelector(".resWrapper")){
+        let resWrapper = document.querySelector(".resWrapper");
+        resultatDiv.removeChild(resWrapper);
+      }
+      (async function() {
+        let rankedTimesLanga = await getFetchData(`/rankadetider/stora`);
+        let rankedTimesMellan = await getFetchData(`/rankadetider/mellan`);
+        let div = document.createElement("div");
+        div.classList.add("resWrapper");
+        let divStora = document.createElement("div");
+        let divMellan = document.createElement("div");
+        
+       
+
+            //STORA
+
+        let headline1 = document.createElement("h3");
+        let divStoraTotal = document.createElement("div");
+        headline1.textContent = "Långa Loppet Tider";
+        divStoraTotal.appendChild(headline1);
+
+        rankedTimesLanga.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divStoraTotal.appendChild(paragraph);
+        });
+
+        divStora.appendChild(divStoraTotal);
+
+        //STORA HERR
+
+        let headline2 = document.createElement("h3");
+        let divStoraHerr = document.createElement("div");
+        headline2.textContent = "Långa Loppet Tider Klass: Herr";
+        divStoraHerr.appendChild(headline2);
+
+        let filterStoraHerr = rankedTimesLanga.filter(function(team){
+            return team.klass == "Herr";
+        })
+
+        filterStoraHerr.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divStoraHerr.appendChild(paragraph);
+        });
+        divStora.appendChild(divStoraHerr);
+
+        //STORA DAM
+
+        let headline3 = document.createElement("h3");
+        let divStoraDam = document.createElement("div");
+        headline3.textContent = "Långa Loppet Tider Klass: Dam";
+        divStoraDam.appendChild(headline3);
+
+        let filterStoraDam = rankedTimesLanga.filter(function(team){
+            return team.klass == "Dam";
+        })
+
+        filterStoraDam.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divStoraDam.appendChild(paragraph);
+        });
+        divStora.appendChild(divStoraDam);
+
+        //STORA MIX
+
+        let headline4 = document.createElement("h3");
+        let divStoraMix = document.createElement("div");
+        headline4.textContent = "Långa Loppet Tider Klass: Mix";
+        divStoraMix.appendChild(headline4);
+
+        let filterStoraMix = rankedTimesLanga.filter(function(team){
+            return team.klass == "Mixed";
+        })
+
+        filterStoraMix.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divStoraMix.appendChild(paragraph);
+        });
+        divStora.appendChild(divStoraMix);
+
+
+
+        //MELLAN
+
+        let headline5 = document.createElement("h3");
+        let divMellanTotal = document.createElement("div");
+        headline5.textContent = "Mellan Loppet Tider";
+        divMellanTotal.appendChild(headline5);
+        
+        rankedTimesMellan.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divMellanTotal.appendChild(paragraph);
+        });
+        divMellan.appendChild(divMellanTotal);
+
+            //MELLAN HERR
+
+        let headline6 = document.createElement("h3");
+        let divMellanHerr = document.createElement("div");
+        headline6.textContent = "Mellan Loppet Tider Klass: Herr";
+        divMellanHerr.appendChild(headline6);
+        
+        let filterMellanHerr = rankedTimesMellan.filter(function(team){
+            return team.klass == "Herr";
+        })
+
+        filterMellanHerr.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divMellanHerr.appendChild(paragraph);
+        });
+        divMellan.appendChild(divMellanHerr);
+        
+            //MELLAN DAM
+
+        let headline7 = document.createElement("h3");
+        let divMellanDam = document.createElement("div");
+        headline7.textContent = "Mellan Loppet Tider Klass: Dam";
+        divMellanDam.appendChild(headline7);
+
+        let filterMellanDam = rankedTimesMellan.filter(function(team){
+            return team.klass == "Dam";
+        })
+        
+        filterMellanDam.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divMellanDam.appendChild(paragraph);
+        });
+        divMellan.appendChild(divMellanDam);
+
+
+        //MELLAN MIX
+
+        let headline8 = document.createElement("h3");
+        let divMellanMix = document.createElement("div");
+        headline8.textContent = "Mellan Loppet Tider Klass: Mix";
+        divMellanMix.appendChild(headline8);
+
+        let filterMellanMix = rankedTimesMellan.filter(function(team){
+            return team.klass == "Mixed";
+        })
+        
+        filterMellanMix.map(function(team) {
+          let paragraph = document.createElement("p");
+          paragraph.textContent = `Team ${team.id}: ${
+            team.officielltid
+          } deltagare ${team.deltagare1} och ${team.deltagare2}`;
+          divMellanMix.appendChild(paragraph);
+        });
+        divMellan.appendChild(divMellanMix);
+
+//APPEND
+
+        div.appendChild(divStora);
+        div.appendChild(divMellan);
+        resultatDiv.appendChild(div);
+        raceSelect.value = "Långa";
+      })();
+    });
+    
 
 raceSelect.addEventListener("change", e => {
   raceSelect = document.querySelector(".raceSelect");
@@ -132,6 +461,9 @@ raceClock3.addEventListener("click", () => {
   let fragment = document.createDocumentFragment();
   for (let lag of deltagare) {
     let button = createTeamButton(lag.id);
+    if(lag.finished == true){
+        button.classList.add("pressed");
+    }
     fragment.appendChild(button);
   }
   buttonWrapper.appendChild(fragment);
@@ -142,6 +474,9 @@ raceClock3.addEventListener("click", () => {
   let fragment = document.createDocumentFragment();
   for (let lag of deltagare) {
     let button = createTeamButton(lag.id);
+    if(lag.finished == true){
+        button.classList.add("pressed");
+    }
     fragment.appendChild(button);
   }
   buttonWrapper2.appendChild(fragment);
@@ -149,13 +484,13 @@ raceClock3.addEventListener("click", () => {
 
 buttonWrapper.addEventListener("click", e => {
   if (e.target.className == "teamButton") {
-      console.log("1"); 
+     
     (async function() {
-        console.log("4");
+    
         e.target.classList.add("pressed");
       const goalTime = new Date();
       const team = e.target.textContent;
-      e.target.style.backgroundColor = "#94d7e0";
+      //e.target.style.backgroundColor = "#94d7e0";
       let startgrupp;
       data = {};
       data.maltid = goalTime;
@@ -206,11 +541,11 @@ buttonWrapper.addEventListener("click", e => {
     })();
   }
   else if(e.target.className == "teamButton pressed"){
-    console.log("2");
+    
       let confirmed = confirm("Är du säker, detta kommer radera tid från team " + e.target.textContent);
       if(confirmed == true){
-        console.log("3");
-        e.target.style.backgroundColor = "white"
+    
+        //e.target.style.backgroundColor = "white"
         const team = e.target.textContent;
         let data = {};
         data.maltid = "";
@@ -221,7 +556,7 @@ buttonWrapper.addEventListener("click", e => {
         await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data);
         (async function (){
             let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
-        console.log(rankedTimes);
+  
         let resVar;
           if (lopp == "stora") {
             resVar = ".resLanga";

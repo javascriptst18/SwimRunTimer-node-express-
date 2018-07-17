@@ -54,7 +54,14 @@ a {
 
 
 /* Classes     */
-
+.uppdatera{
+    text-decoration: none;
+    color:#0091a9;
+    height: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 0.4rem 0.7rem;
+}
 .hidden{
     display: none;
 }
@@ -160,6 +167,9 @@ min-height: 100%;
     width: 100%;
     min-height: 100vh;
 
+}
+.pressed{
+    background-color: #94d7e0;
 }
 
 @media (max-width: 780px){
