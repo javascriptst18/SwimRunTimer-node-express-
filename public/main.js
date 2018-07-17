@@ -19,6 +19,49 @@ let raceStartTime1;
 let raceStartTime2;
 let raceStartTime3;
 
+(async function() {
+    let dataStart = await getFetchData(
+      "/starttid/stora/1"
+    );
+    if(dataStart){
+        let div = document.createElement("div");
+        div.classList.add("clock1");
+        raceClock1.insertAdjacentElement("afterend",div);
+        let parent = raceClock1.parentElement;
+        parent.removeChild(raceClock1);
+        raceStartTime1 = dataStart;
+        startWatch1();
+    }
+})();
+(async function() {
+    let dataStart = await getFetchData(
+        "/starttid/stora/2"
+    );
+    if(dataStart){
+        let div = document.createElement("div");
+        div.classList.add("clock2");
+        raceClock2.insertAdjacentElement("afterend",div);
+        let parent = raceClock2.parentElement;
+        parent.removeChild(raceClock2);
+        raceStartTime2 = dataStart;
+        startWatch2();
+    }
+})();
+    
+(async function() {
+    let dataStart = await getFetchData(
+        "/starttid/mellan/ingen"
+    );
+    if(dataStart){
+        let div = document.createElement("div");
+        div.classList.add("clock3");
+        raceClock3.insertAdjacentElement("afterend",div);
+        let parent = raceClock3.parentElement;
+        parent.removeChild(raceClock3);
+        raceStartTime3 = dataStart;
+        startWatch3();
+    }
+})();
 menyHem.addEventListener("click", () => {
   lopp = "stora";
   document.querySelector(".mellan").classList.add("hidden");
