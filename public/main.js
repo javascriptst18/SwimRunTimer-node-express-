@@ -149,7 +149,10 @@ raceClock3.addEventListener("click", () => {
 
 buttonWrapper.addEventListener("click", e => {
   if (e.target.className == "teamButton") {
+      console.log("1"); 
     (async function() {
+        console.log("4");
+        e.target.classList.add("pressed");
       const goalTime = new Date();
       const team = e.target.textContent;
       e.target.style.backgroundColor = "#94d7e0";
@@ -201,6 +204,48 @@ buttonWrapper.addEventListener("click", e => {
         })();
       })();
     })();
+  }
+  else if(e.target.className == "teamButton pressed"){
+    console.log("2");
+      let confirmed = confirm("Är du säker, detta kommer radera tid från team " + e.target.textContent);
+      if(confirmed == true){
+        console.log("3");
+        e.target.style.backgroundColor = "white"
+        const team = e.target.textContent;
+        let data = {};
+        data.maltid = "";
+        data.officielltid = "";
+        data.finished = false;
+        data.delete = true;
+        (async function (){
+        await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data);
+        (async function (){
+            let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
+        console.log(rankedTimes);
+        let resVar;
+          if (lopp == "stora") {
+            resVar = ".resLanga";
+          } else {
+            resVar = ".resMellan";
+          }
+        let resultatLista = document.querySelector(resVar);
+          let div = document.createElement("div");
+
+          rankedTimes.map(function(team) {
+            let para = document.createElement("p");
+            para.textContent = `Team ${team.id}: ${team.officielltid}`;
+            div.appendChild(para);
+          });
+
+          let last = resultatLista.lastChild;
+          resultatLista.removeChild(last);
+          resultatLista.appendChild(div);
+        })();     
+    })();
+        
+      
+      e.target.classList.remove("pressed");
+    }
   }
 });
 

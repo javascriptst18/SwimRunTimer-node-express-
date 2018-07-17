@@ -175,14 +175,14 @@ app.patch("/deltagarelopp/:lopp/:team", function(req, res, err) {
     let temp = JSON.parse(data);
     if(req.params.lopp == "stora"){
     temp.deltagareLoppStora.map(function(team) {
-      if (team.id == req.params.team && team.finished == false) {
-        if (req.body.finished) {
+      if (team.id == req.params.team) { // && team.finished == false
+        if (req.body.finished || req.body.delete == true) {
           team.finished = req.body.finished;
         }
-        if (req.body.maltid) {
+        if (req.body.maltid || req.body.delete == true) {
           team.maltid = req.body.maltid;
         }
-        if (req.body.officielltid) {
+        if (req.body.officielltid || req.body.delete == true) {
           team.officielltid = req.body.officielltid;
         }     
       }
@@ -190,7 +190,7 @@ app.patch("/deltagarelopp/:lopp/:team", function(req, res, err) {
   }
   if(req.params.lopp == "mellan"){
     temp.deltagareLoppMellan.map(function(team) {
-      if (team.id == req.params.team && team.finished == false) {
+      if (team.id == req.params.team) {
         if (req.body.finished) {
           team.finished = req.body.finished;
         }
