@@ -118,6 +118,9 @@ menyResultat.addEventListener("click", e => {
   e.preventDefault();
   mellan = document.querySelector(".mellan");
   langa = document.querySelector(".langa");
+  document.querySelector("#storaRaceRadio").checked = true;
+  document.querySelector("#Total").checked = true;
+  
   let resultatDiv = document.querySelector(".resultat");
   if(document.querySelector(".resWrapper")){
     let resWrapper = document.querySelector(".resWrapper");
@@ -347,7 +350,6 @@ uppdatera.addEventListener("click", e => {
         }else{
           divMellan.classList.add("hidden");
         }
-      
        
 
             //STORA
@@ -355,6 +357,9 @@ uppdatera.addEventListener("click", e => {
         let headline1 = document.createElement("h3");
         let divStoraTotal = document.createElement("div");
         divStoraTotal.classList.add("storaResultatTotal");
+        if(document.querySelector("#Total").checked == false){
+          divStoraTotal.classList.add("hidden");
+        }
         headline1.textContent = "Långa Loppet Tider";
         divStoraTotal.appendChild(headline1);
 
@@ -372,7 +377,10 @@ uppdatera.addEventListener("click", e => {
 
         let headline2 = document.createElement("h3");
         let divStoraHerr = document.createElement("div");
-        divStoraHerr.classList.add("storaResultatHerr", "hidden");
+        divStoraHerr.classList.add("storaResultatHerr");
+        if(document.querySelector("#Herr").checked == false){
+          divStoraHerr.classList.add("hidden");
+        }
 
         headline2.textContent = "Långa Loppet Tider Klass: Herr";
         divStoraHerr.appendChild(headline2);
@@ -394,7 +402,10 @@ uppdatera.addEventListener("click", e => {
 
         let headline3 = document.createElement("h3");
         let divStoraDam = document.createElement("div");
-        divStoraDam.classList.add("storaResultatDam", "hidden");
+        divStoraDam.classList.add("storaResultatDam");
+        if(document.querySelector("#Dam").checked == false){
+          divStoraDam.classList.add("hidden");
+        }
 
         headline3.textContent = "Långa Loppet Tider Klass: Dam";
         divStoraDam.appendChild(headline3);
@@ -416,8 +427,10 @@ uppdatera.addEventListener("click", e => {
 
         let headline4 = document.createElement("h3");
         let divStoraMix = document.createElement("div");
-        divStoraMix.classList.add("storaResultatMix", "hidden");
-
+        divStoraMix.classList.add("storaResultatMix");
+        if(document.querySelector("#Mix").checked == false){
+          divStoraMix.classList.add("hidden");
+        }
         headline4.textContent = "Långa Loppet Tider Klass: Mix";
         divStoraMix.appendChild(headline4);
 
@@ -441,6 +454,9 @@ uppdatera.addEventListener("click", e => {
         let headline5 = document.createElement("h3");
         let divMellanTotal = document.createElement("div");
         divMellanTotal.classList.add("mellanResultatTotal");
+        if(document.querySelector("#Total").checked == false){
+          divMellanTotal.classList.add("hidden");
+        }
 
         headline5.textContent = "Mellan Loppet Tider";
         divMellanTotal.appendChild(headline5);
@@ -458,7 +474,10 @@ uppdatera.addEventListener("click", e => {
 
         let headline6 = document.createElement("h3");
         let divMellanHerr = document.createElement("div");
-        divMellanHerr.classList.add("mellanResultatHerr", "hidden");
+        divMellanHerr.classList.add("mellanResultatHerr");
+        if(document.querySelector("#Herr").checked == false){
+          divMellanHerr.classList.add("hidden");
+        }
         headline6.textContent = "Mellan Loppet Tider Klass: Herr";
         divMellanHerr.appendChild(headline6);
         
@@ -479,7 +498,10 @@ uppdatera.addEventListener("click", e => {
 
         let headline7 = document.createElement("h3");
         let divMellanDam = document.createElement("div");
-        divMellanDam.classList.add("mellanResultatDam", "hidden");
+        divMellanDam.classList.add("mellanResultatDam");
+        if(document.querySelector("#Dam").checked == false){
+          divMellanDam.classList.add("hidden");
+        }
         headline7.textContent = "Mellan Loppet Tider Klass: Dam";
         divMellanDam.appendChild(headline7);
 
@@ -501,7 +523,10 @@ uppdatera.addEventListener("click", e => {
 
         let headline8 = document.createElement("h3");
         let divMellanMix = document.createElement("div");
-        divMellanMix.classList.add("mellanResultatMix", "hidden");
+        divMellanMix.classList.add("mellanResultatMix");
+        if(document.querySelector("#Mix").checked == false){
+          divMellanMix.classList.add("hidden");
+        }
         headline8.textContent = "Mellan Loppet Tider Klass: Mix";
         divMellanMix.appendChild(headline8);
 
