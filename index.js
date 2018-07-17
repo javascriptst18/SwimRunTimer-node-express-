@@ -138,7 +138,7 @@ app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
     
     for(let i = 0; i<3; i++){
       if (temp.starttid[i].lopp == req.params.lopp) {
-        console.log("im in");
+        
         if(req.params.grupp == 1 && temp.starttid[0].started === false){
           if (req.body.starttid) {
             temp.starttid[0].starttid = req.body.starttid;
@@ -168,25 +168,7 @@ app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
   });
 
 });
-app.patch("/starttid/:lopp/", function(req, res, err) {
-  fs.readFile("./public/db.json", "utf-8", function(err, data) {
-    let temp = JSON.parse(data);
-    
-      if (req.params.lopp == "mellan") { 
-        
-          if (req.body.starttid) {
-            
-            temp.starttid[2].starttid = req.body.starttid;
-          }
-      }
-    
-    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
-      if (err) throw err;
-      res.send("ok")
-    });
-  });
 
-});
 
 app.patch("/deltagarelopp/:lopp/:team", function(req, res, err) {
   fs.readFile("./public/db.json", "utf-8", function(err, data) {
