@@ -19,8 +19,8 @@
             </h1>
 
             <ul class="flexwrapperMeny">
-                    <a href="#"><li class="meny menyHem">Hem</li></a>
-                <a href=""><li class="meny menyResultat">Resultat</li></a>
+                    <a href="#"class="menyHem"><li class="meny">Hem</li></a>
+                <a href="" class="menyResultat"><li class="meny">Resultat</li></a>
                 <select class="meny raceSelect">
                     <option value="stora">Långa</option>
                     <option value="mellan">Mellan</option>
@@ -61,6 +61,23 @@
                 </div>
                 <div class="resultat hidden">
                     <button class="uppdatera">Uppdatera resultat</button>
+                    <form class="radioRaceSelect">
+                    <label for="storaRaceRadio">Långa Loppet</label>
+                    
+                    <input type="radio" name="raceRadio" id="storaRaceRadio">
+                    <label for="mellanRaceRadio">Mellan Loppet</label>
+                    <input type="radio" name="raceRadio" id="mellanRaceRadio">
+                </form>
+                <form class="radioKlassSelect">
+                    <label for="Total">Total</label>
+                    <input type="radio" name="raceKlass" id="Total">
+                    <label for="Herr">Herrar</label>
+                    <input type="radio" name="raceKlass" id="Herr">
+                    <label for="Dam">Damer</label>
+                    <input type="radio" name="raceKlass" id="Dam">
+                    <label for="Mix">Mixed</label>
+                    <input type="radio" name="raceKlass" id="Mix">
+                </form>
                 </div>
         <footer class="griditem4">
              <p class="sidfot">Copywrite Carl-Axel Hallgren</p>

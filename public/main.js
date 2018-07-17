@@ -9,6 +9,8 @@ let menyHem = document.querySelector(".menyHem");
 let mellan = document.querySelector(".mellan");
 let langa = document.querySelector(".langa");
 let uppdatera = document.querySelector(".uppdatera");
+let radioRaceSelect = document.querySelector(".radioRaceSelect");
+let radioKlassSelect = document.querySelector(".radioKlassSelect");
 
 let counter1 = 0;
 let counter2 = 0;
@@ -18,6 +20,12 @@ let startgrupp = 1;
 let raceStartTime1;
 let raceStartTime2;
 let raceStartTime3;
+
+
+
+
+
+
 
 (async function() {
     let dataStart = await getFetchData(
@@ -69,6 +77,43 @@ menyHem.addEventListener("click", () => {
   document.querySelector(".langa").classList.remove("hidden");
 });
 
+radioRaceSelect.addEventListener("change", e =>  {
+    e.preventDefault();
+    if(e.target.id=="storaRaceRadio"){
+        document.querySelector(".storaResultat").classList.remove("hidden");
+        document.querySelector(".mellanResultat").classList.add("hidden");
+    }
+    else if(e.target.id=="mellanRaceRadio"){
+        
+        document.querySelector(".mellanResultat").classList.remove("hidden");
+        document.querySelector(".storaResultat").classList.add("hidden");
+    }
+})
+
+radioKlassSelect.addEventListener("change", e =>  {
+    e.preventDefault();
+    if(e.target.id=="Total"){
+        hideRes();
+        document.querySelector(".storaResultatTotal").classList.remove("hidden");
+        document.querySelector(".mellanResultatTotal").classList.remove("hidden");
+    }
+    else if(e.target.id=="Herr"){
+        hideRes();
+        document.querySelector(".mellanResultatHerr").classList.remove("hidden");
+        document.querySelector(".storaResultatHerr").classList.remove("hidden");
+    }
+    else if(e.target.id=="Dam"){
+        hideRes();
+        document.querySelector(".mellanResultatDam").classList.remove("hidden");
+        document.querySelector(".storaResultatDam").classList.remove("hidden");
+    }
+    else if(e.target.id=="Mix"){
+        hideRes();
+        document.querySelector(".mellanResultatMix").classList.remove("hidden");
+        document.querySelector(".storaResultatMix").classList.remove("hidden");
+    }
+})
+
 menyResultat.addEventListener("click", e => {
   e.preventDefault();
   mellan = document.querySelector(".mellan");
@@ -78,7 +123,6 @@ menyResultat.addEventListener("click", e => {
     let resWrapper = document.querySelector(".resWrapper");
     resultatDiv.removeChild(resWrapper);
   }
-  let resWrapper = document.querySelector(".resWrapper");
   if (mellan.classList.contains("hidden")) {
   } else {
     mellan.classList.add("hidden");
@@ -96,7 +140,9 @@ menyResultat.addEventListener("click", e => {
         let div = document.createElement("div");
         div.classList.add("resWrapper");
         let divStora = document.createElement("div");
+        divStora.classList.add("storaResultat");
         let divMellan = document.createElement("div");
+        divMellan.classList.add("mellanResultat", "hidden");
         
        
 
@@ -104,6 +150,7 @@ menyResultat.addEventListener("click", e => {
 
         let headline1 = document.createElement("h3");
         let divStoraTotal = document.createElement("div");
+        divStoraTotal.classList.add("storaResultatTotal");
         headline1.textContent = "Långa Loppet Tider";
         divStoraTotal.appendChild(headline1);
 
@@ -121,6 +168,8 @@ menyResultat.addEventListener("click", e => {
 
         let headline2 = document.createElement("h3");
         let divStoraHerr = document.createElement("div");
+        divStoraHerr.classList.add("storaResultatHerr", "hidden");
+
         headline2.textContent = "Långa Loppet Tider Klass: Herr";
         divStoraHerr.appendChild(headline2);
 
@@ -141,6 +190,8 @@ menyResultat.addEventListener("click", e => {
 
         let headline3 = document.createElement("h3");
         let divStoraDam = document.createElement("div");
+        divStoraDam.classList.add("storaResultatDam", "hidden");
+
         headline3.textContent = "Långa Loppet Tider Klass: Dam";
         divStoraDam.appendChild(headline3);
 
@@ -161,6 +212,8 @@ menyResultat.addEventListener("click", e => {
 
         let headline4 = document.createElement("h3");
         let divStoraMix = document.createElement("div");
+        divStoraMix.classList.add("storaResultatMix", "hidden");
+
         headline4.textContent = "Långa Loppet Tider Klass: Mix";
         divStoraMix.appendChild(headline4);
 
@@ -183,6 +236,9 @@ menyResultat.addEventListener("click", e => {
 
         let headline5 = document.createElement("h3");
         let divMellanTotal = document.createElement("div");
+        divMellanTotal.classList.add("mellanResultatTotal");
+
+
         headline5.textContent = "Mellan Loppet Tider";
         divMellanTotal.appendChild(headline5);
         
@@ -199,6 +255,7 @@ menyResultat.addEventListener("click", e => {
 
         let headline6 = document.createElement("h3");
         let divMellanHerr = document.createElement("div");
+        divMellanHerr.classList.add("mellanResultatHerr", "hidden");
         headline6.textContent = "Mellan Loppet Tider Klass: Herr";
         divMellanHerr.appendChild(headline6);
         
@@ -219,6 +276,7 @@ menyResultat.addEventListener("click", e => {
 
         let headline7 = document.createElement("h3");
         let divMellanDam = document.createElement("div");
+        divMellanDam.classList.add("mellanResultatDam", "hidden");
         headline7.textContent = "Mellan Loppet Tider Klass: Dam";
         divMellanDam.appendChild(headline7);
 
@@ -240,6 +298,7 @@ menyResultat.addEventListener("click", e => {
 
         let headline8 = document.createElement("h3");
         let divMellanMix = document.createElement("div");
+        divMellanMix.classList.add("mellanResultatMix", "hidden");
         headline8.textContent = "Mellan Loppet Tider Klass: Mix";
         divMellanMix.appendChild(headline8);
 
@@ -266,6 +325,7 @@ menyResultat.addEventListener("click", e => {
     });
 
 uppdatera.addEventListener("click", e => {
+
     let resultatDiv = document.querySelector(".resultat");
     if(document.querySelector(".resWrapper")){
         let resWrapper = document.querySelector(".resWrapper");
@@ -277,14 +337,24 @@ uppdatera.addEventListener("click", e => {
         let div = document.createElement("div");
         div.classList.add("resWrapper");
         let divStora = document.createElement("div");
+        divStora.classList.add("storaResultat");
         let divMellan = document.createElement("div");
-        
+        divMellan.classList.add("mellanResultat");
+        if(document.querySelector("#storaRaceRadio").checked){
+          divMellan.classList.add("hidden");
+        }else if(document.querySelector("#mellanRaceRadio").checked){
+          divStora.classList.add("hidden");
+        }else{
+          divMellan.classList.add("hidden");
+        }
+      
        
 
             //STORA
 
         let headline1 = document.createElement("h3");
         let divStoraTotal = document.createElement("div");
+        divStoraTotal.classList.add("storaResultatTotal");
         headline1.textContent = "Långa Loppet Tider";
         divStoraTotal.appendChild(headline1);
 
@@ -302,6 +372,8 @@ uppdatera.addEventListener("click", e => {
 
         let headline2 = document.createElement("h3");
         let divStoraHerr = document.createElement("div");
+        divStoraHerr.classList.add("storaResultatHerr", "hidden");
+
         headline2.textContent = "Långa Loppet Tider Klass: Herr";
         divStoraHerr.appendChild(headline2);
 
@@ -322,6 +394,8 @@ uppdatera.addEventListener("click", e => {
 
         let headline3 = document.createElement("h3");
         let divStoraDam = document.createElement("div");
+        divStoraDam.classList.add("storaResultatDam", "hidden");
+
         headline3.textContent = "Långa Loppet Tider Klass: Dam";
         divStoraDam.appendChild(headline3);
 
@@ -342,6 +416,8 @@ uppdatera.addEventListener("click", e => {
 
         let headline4 = document.createElement("h3");
         let divStoraMix = document.createElement("div");
+        divStoraMix.classList.add("storaResultatMix", "hidden");
+
         headline4.textContent = "Långa Loppet Tider Klass: Mix";
         divStoraMix.appendChild(headline4);
 
@@ -364,6 +440,8 @@ uppdatera.addEventListener("click", e => {
 
         let headline5 = document.createElement("h3");
         let divMellanTotal = document.createElement("div");
+        divMellanTotal.classList.add("mellanResultatTotal");
+
         headline5.textContent = "Mellan Loppet Tider";
         divMellanTotal.appendChild(headline5);
         
@@ -380,6 +458,7 @@ uppdatera.addEventListener("click", e => {
 
         let headline6 = document.createElement("h3");
         let divMellanHerr = document.createElement("div");
+        divMellanHerr.classList.add("mellanResultatHerr", "hidden");
         headline6.textContent = "Mellan Loppet Tider Klass: Herr";
         divMellanHerr.appendChild(headline6);
         
@@ -400,6 +479,7 @@ uppdatera.addEventListener("click", e => {
 
         let headline7 = document.createElement("h3");
         let divMellanDam = document.createElement("div");
+        divMellanDam.classList.add("mellanResultatDam", "hidden");
         headline7.textContent = "Mellan Loppet Tider Klass: Dam";
         divMellanDam.appendChild(headline7);
 
@@ -421,13 +501,13 @@ uppdatera.addEventListener("click", e => {
 
         let headline8 = document.createElement("h3");
         let divMellanMix = document.createElement("div");
+        divMellanMix.classList.add("mellanResultatMix", "hidden");
         headline8.textContent = "Mellan Loppet Tider Klass: Mix";
         divMellanMix.appendChild(headline8);
 
         let filterMellanMix = rankedTimesMellan.filter(function(team){
             return team.klass == "Mixed";
         })
-        
         filterMellanMix.map(function(team) {
           let paragraph = document.createElement("p");
           paragraph.textContent = `Team ${team.id}: ${
@@ -773,6 +853,17 @@ function displayTime2() {
 
 function msecToSec(msec) {
   return msec / 1000;
+}
+
+function hideRes(){
+    document.querySelector(".storaResultatTotal").classList.add("hidden");
+    document.querySelector(".storaResultatHerr").classList.add("hidden");
+    document.querySelector(".storaResultatDam").classList.add("hidden");
+    document.querySelector(".storaResultatMix").classList.add("hidden");
+    document.querySelector(".mellanResultatTotal").classList.add("hidden");
+    document.querySelector(".mellanResultatHerr").classList.add("hidden");
+    document.querySelector(".mellanResultatDam").classList.add("hidden");
+    document.querySelector(".mellanResultatMix").classList.add("hidden");
 }
 
 function createTeamButton(lagnummer) {

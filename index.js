@@ -232,9 +232,54 @@ app.post("/deltagare", function(req, res, err) {
 
 
 
-app.delete("/reset", function(req, res, err) {
+app.delete("/hardreset", function(req, res, err) {
   fs.readFile("./public/backup.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
+    
+    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
+      if (err) throw err;
+      
+      res.send("ok")
+    });
+  });
+});
+
+app.delete("/reset/1", function(req, res, err) {
+  fs.readFile("./public/db.json", "utf-8", function(err, data) {
+    let temp = JSON.parse(data);
+
+    temp.starttid[0].starttid = "";
+    temp.starttid[0].started = false;
+    
+    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
+      if (err) throw err;
+      
+      res.send("ok")
+    });
+  });
+});
+
+app.delete("/reset/2", function(req, res, err) {
+  fs.readFile("./public/db.json", "utf-8", function(err, data) {
+    let temp = JSON.parse(data);
+
+    temp.starttid[1].starttid = "";
+    temp.starttid[1].started = false;
+    
+    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
+      if (err) throw err;
+      
+      res.send("ok")
+    });
+  });
+});
+
+app.delete("/reset/3", function(req, res, err) {
+  fs.readFile("./public/db.json", "utf-8", function(err, data) {
+    let temp = JSON.parse(data);
+
+    temp.starttid[2].starttid = "";
+    temp.starttid[2].started = false;
     
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
