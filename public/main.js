@@ -251,60 +251,105 @@ buttonWrapper.addEventListener("click", e => {
 
 buttonWrapper2.addEventListener("click", e => {
     if (e.target.className == "teamButton") {
-        (async function() {
-          const goalTime = new Date();
-          const team = e.target.textContent;
-          e.target.style.backgroundColor = "#94d7e0";
-          let startgrupp;
-          data = {};
-          data.maltid = goalTime;
-          await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
+        console.log("1"); 
+      (async function() {
+          console.log("4");
+          e.target.classList.add("pressed");
+        const goalTime = new Date();
+        const team = e.target.textContent;
+        e.target.style.backgroundColor = "#94d7e0";
+        let startgrupp;
+        data = {};
+        data.maltid = goalTime;
+        await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
+        await (async function() {
+          let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
+          if (lopp == "stora") {
+            startgrupp = teamData.startgrupp;
+          } else {
+            startgrupp = "ingen";
+          }
           await (async function() {
-            let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
+            let dataStart = await getFetchData(
+              "/starttid/" + lopp + "/" + startgrupp
+            ); //get starttid
+  
+            let resVar;
             if (lopp == "stora") {
-              startgrupp = teamData.startgrupp;
+              resVar = ".resLanga";
             } else {
-              startgrupp = "ingen";
+              resVar = ".resMellan";
             }
-            await (async function() {
-              let dataStart = await getFetchData(
-                "/starttid/" + lopp + "/" + startgrupp
-              ); //get starttid
-    
-              let resVar;
-              if (lopp == "stora") {
-                resVar = ".resLanga";
-              } else {
-                resVar = ".resMellan";
-              }
-              let resultatLista = document.querySelector(resVar);
-              let result = Date.parse(goalTime) - Date.parse(dataStart);
-              result = secToHHMMSS(msecToSec(result));
-              let data = {};
-              data.officielltid = result;
-              data.finished = true;
-              await patchFetchData(
-                "/deltagarelopp" + "/" + lopp + "/" + team,
-                data
-              );
-    
-              let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
-              let div = document.createElement("div");
-    
-              rankedTimes.map(function(team) {
-                let para = document.createElement("p");
-                para.textContent = `Team ${team.id}: ${team.officielltid}`;
-                div.appendChild(para);
-              });
-    
-              let last = resultatLista.lastChild;
-              resultatLista.removeChild(last);
-              resultatLista.appendChild(div);
-            })();
+            let resultatLista = document.querySelector(resVar);
+            let result = Date.parse(goalTime) - Date.parse(dataStart);
+            result = secToHHMMSS(msecToSec(result));
+            let data = {};
+            data.officielltid = result;
+            data.finished = true;
+            await patchFetchData(
+              "/deltagarelopp" + "/" + lopp + "/" + team,
+              data
+            );
+  
+            let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
+            let div = document.createElement("div");
+  
+            rankedTimes.map(function(team) {
+              let para = document.createElement("p");
+              para.textContent = `Team ${team.id}: ${team.officielltid}`;
+              div.appendChild(para);
+            });
+  
+            let last = resultatLista.lastChild;
+            resultatLista.removeChild(last);
+            resultatLista.appendChild(div);
           })();
         })();
+      })();
+    }
+    else if(e.target.className == "teamButton pressed"){
+      console.log("2");
+        let confirmed = confirm("Är du säker, detta kommer radera tid från team " + e.target.textContent);
+        if(confirmed == true){
+          console.log("3");
+          e.target.style.backgroundColor = "white"
+          const team = e.target.textContent;
+          let data = {};
+          data.maltid = "";
+          data.officielltid = "";
+          data.finished = false;
+          data.delete = true;
+          (async function (){
+          await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data);
+          (async function (){
+              let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
+          console.log(rankedTimes);
+          let resVar;
+            if (lopp == "stora") {
+              resVar = ".resLanga";
+            } else {
+              resVar = ".resMellan";
+            }
+          let resultatLista = document.querySelector(resVar);
+            let div = document.createElement("div");
+  
+            rankedTimes.map(function(team) {
+              let para = document.createElement("p");
+              para.textContent = `Team ${team.id}: ${team.officielltid}`;
+              div.appendChild(para);
+            });
+  
+            let last = resultatLista.lastChild;
+            resultatLista.removeChild(last);
+            resultatLista.appendChild(div);
+          })();     
+      })();
+          
+        
+        e.target.classList.remove("pressed");
       }
-    });
+    }
+  });
 // FUNCTIONS
 
 function displayTime1() {

@@ -191,13 +191,13 @@ app.patch("/deltagarelopp/:lopp/:team", function(req, res, err) {
   if(req.params.lopp == "mellan"){
     temp.deltagareLoppMellan.map(function(team) {
       if (team.id == req.params.team) {
-        if (req.body.finished) {
+        if (req.body.finished || req.body.delete == true) {
           team.finished = req.body.finished;
         }
-        if (req.body.maltid) {
+        if (req.body.maltid || req.body.delete == true) {
           team.maltid = req.body.maltid;
         }
-        if (req.body.officielltid) {
+        if (req.body.officielltid || req.body.delete == true) {
           team.officielltid = req.body.officielltid;
         }   
       }
