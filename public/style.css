@@ -2,16 +2,21 @@
 *{
     font-family: "IBM Plex Sans", Arial, sans-serif;
     box-sizing: border-box;
+    font-weight: bold;
+
 }
 
-
+body{
+    background: rgb(255,255,255);
+    background: linear-gradient(360deg,rgba(0,211,238,1) 0%, rgba(0,194,219,1) 65%, rgba(0,145,169,1) 100%);
+}
 header{
     
-    background-color: #0091a9;
+    /*background-color: #0091a9;*/
     padding-left: 20px;
 }
 footer{
-    background-color: #00c2db;
+    /*background-color: #00c2db;*/
 }
 aside{
     background-color: lightgray;
@@ -44,8 +49,12 @@ input[type="radio"]{
     margin-left: 2em;
 
 }
+h3{
+    color:white;
+}
 p{
     margin: 0.5em 0;
+    color: white;
 }
 
 
@@ -93,27 +102,28 @@ p{
     
     min-height: 100vh;
     padding: 15px 10px 15px 10px;
-    background-color: #00c2db;
+    /*background-color: #00c2db;*/
     display:flex;
     flex-direction: column;
     width: 80%;
 }
 .griditem3{
-    width: 20%;
-    background-color:white;
+    width: 22%;
+    padding-left: 1em;
+    background-color: transparent;
 }
 .griditem4{
-   
-    text-align: right;
-    background-color: #fafafa;
-    color: white;
-    display: flex;
-    flex-wrap: wrap;
+   width:78%;
+    text-align: center;
+    color: rgba(0,194,219,1);
+    margin-bottom: 0.5em;
+    
 }
 .raceKlocka1, .raceKlocka2, .raceKlocka3, .raceKlocka4{
     width: 33%;
+    font-weight: 400;
     min-height: 100px;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 1.4rem;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -126,6 +136,7 @@ p{
 }
 .clock1, .clock2, .clock3, .clock4{
     width:33%;
+    font-weight: 400;
     font-size: 2.2em;
     align-self: center;
     text-align: center; 
@@ -152,6 +163,7 @@ min-height: 100%;
 }
 .startButtons{
     width: 100%;
+    min-height: 100px;
     align-self: center;
     display: flex;
    
@@ -163,6 +175,7 @@ min-height: 100%;
 }
 
 .teamButton{
+    font-weight: 400;
     min-width: 65px;
     max-width: 70px;
     flex-grow: 1;
@@ -204,10 +217,14 @@ min-height: 100%;
     background-color: #94d7e0;
 }
 
+
 @media (max-width: 780px){
     .griditem1{
         flex-direction: column;
         justify-content: center;
+    }
+    .griditem3{
+        padding-left:0.5em;
     }
 
 }
@@ -226,6 +243,14 @@ min-height: 100%;
     }
     .griditem2{
         width: 100%;
+    }
+    .griditem3{
+        width: 100%;
+        background-color: transparent;
+    }
+    .griditem4{
+        margin-top:4em;
+        width:100%;
     }
     .flexwrapperMeny{
         justify-content: center;
