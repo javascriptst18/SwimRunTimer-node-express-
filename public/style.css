@@ -40,6 +40,13 @@ a {
     padding: 0.4rem 0.7rem;
 }
 
+input[type="radio"]{
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+p{
+    margin: 0.5em 0;
+}
 
 
 
