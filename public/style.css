@@ -12,12 +12,9 @@ body{
 }
 header{
     
-    /*background-color: #0091a9;*/
     padding-left: 20px;
 }
-footer{
-    /*background-color: #00c2db;*/
-}
+
 aside{
     background-color: lightgray;
 }
@@ -89,8 +86,9 @@ p{
 }
 
 .gridWrapperMain{
-    
+    max-width: 900px;
     height: 100%;
+    margin:0 auto;
 }
 .griditem1{
     
