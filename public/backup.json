@@ -1,11 +1,29 @@
 {
-  "starttid": [
-    { "id": 0, "lopp": "stora", "startgrupp": 1, "starttid": "", "started": false },
-    { "id": 1, "lopp": "stora", "startgrupp": 2, "starttid": "", "started": false },
-    { "id": 2, "lopp": "mellan", "starttid": "", "started": false }
-  ],
-  "deltagareLoppStora": [
-    {
+	"starttid": [
+	  {
+		"id": 0,
+		"lopp": "stora",
+		"startgrupp": 1,
+		"starttid": "",
+		"started": false
+	  },
+	  {
+		"id": 1,
+		"lopp": "stora",
+		"startgrupp": 2,
+		"starttid": "",
+		"started": false
+	  },
+	  { "id": 2, "lopp": "mellan", "starttid": "", "started": false },
+	  {
+		"id": 3,
+		"lopp": "stora",
+		"starttid": "",
+		"started": false
+	  }
+	],
+	"deltagareLoppStora": [
+	  {
 		"id": "1",
 		"klass": "Mixed",
 		"deltagare1": "Eva-Stina Wittström",
@@ -15,8 +33,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "2",
 		"klass": "Mixed",
 		"deltagare1": "Hjalmar Didrikson",
@@ -26,8 +44,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "3",
 		"klass": "Mixed",
 		"deltagare1": "Carl Högberg",
@@ -37,8 +55,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "4",
 		"klass": "Herr",
 		"deltagare1": "Björn Henriksson",
@@ -48,8 +66,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "5",
 		"klass": "Mixed",
 		"deltagare1": "Inger Marie Smestad",
@@ -59,8 +77,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "6",
 		"klass": "Mixed",
 		"deltagare1": "Erik stenberg",
@@ -70,8 +88,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "7",
 		"klass": "Mixed",
 		"deltagare1": "Maria Enmark",
@@ -81,8 +99,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "8",
 		"klass": "Herr",
 		"deltagare1": "Claes Svahn",
@@ -92,8 +110,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "9",
 		"klass": "Herr",
 		"deltagare1": "Filip henriksson",
@@ -103,8 +121,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "10",
 		"klass": "Dam",
 		"deltagare1": "Anna-Karin Henriksson",
@@ -114,8 +132,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "11",
 		"klass": "Herr",
 		"deltagare1": "Viktor Grell",
@@ -125,8 +143,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "12",
 		"klass": "Mixed",
 		"deltagare1": "Sebastian Persson",
@@ -136,8 +154,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "13",
 		"klass": "Dam",
 		"deltagare1": "Frida Axell",
@@ -147,8 +165,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "14",
 		"klass": "Herr",
 		"deltagare1": "Mooij per olof",
@@ -158,8 +176,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "15",
 		"klass": "Dam",
 		"deltagare1": "Annika Turndal Somp",
@@ -169,8 +187,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "16",
 		"klass": "Mixed",
 		"deltagare1": "Susanna Eckerstein",
@@ -180,8 +198,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "17",
 		"klass": "Mixed",
 		"deltagare1": "Johan tengfjord",
@@ -191,8 +209,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "18",
 		"klass": "Herr",
 		"deltagare1": "Max Hallenberg",
@@ -202,8 +220,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "19",
 		"klass": "Herr",
 		"deltagare1": "Anders Eliasson",
@@ -213,8 +231,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "20",
 		"klass": "Mixed",
 		"deltagare1": "Malin Storm",
@@ -224,8 +242,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "21",
 		"klass": "Mixed",
 		"deltagare1": "Daniel Bruce",
@@ -235,8 +253,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "22",
 		"klass": "Mixed",
 		"deltagare1": "Maria Hofberg",
@@ -246,8 +264,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "23",
 		"klass": "Herr",
 		"deltagare1": "Mats Tullberg",
@@ -257,8 +275,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "24",
 		"klass": "Herr",
 		"deltagare1": "Patrik Lundblad",
@@ -268,8 +286,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "25",
 		"klass": "Mixed",
 		"deltagare1": "Bo Johansson",
@@ -279,8 +297,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "26",
 		"klass": "Herr",
 		"deltagare1": "Jonathan Redvall",
@@ -290,8 +308,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "27",
 		"klass": "Mixed",
 		"deltagare1": "Johanna Öhrnberg",
@@ -301,8 +319,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "28",
 		"klass": "Dam",
 		"deltagare1": "Annika ivarsson",
@@ -312,8 +330,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "29",
 		"klass": "Mixed",
 		"deltagare1": "Lisa rendahl",
@@ -323,8 +341,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "30",
 		"klass": "Dam",
 		"deltagare1": "Susanne Carlson",
@@ -334,8 +352,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "31",
 		"klass": "Herr",
 		"deltagare1": "Dick Andersson",
@@ -345,8 +363,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "32",
 		"klass": "Herr",
 		"deltagare1": "Leif Nilsson",
@@ -356,8 +374,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "33",
 		"klass": "Mixed",
 		"deltagare1": "Ken Hymnelius",
@@ -367,8 +385,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "1"
-	},
-	{
+	  },
+	  {
 		"id": "34",
 		"klass": "Herr",
 		"deltagare1": "Claes Westling",
@@ -378,8 +396,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "35",
 		"klass": "Dam",
 		"deltagare1": "Linda Hällström",
@@ -389,8 +407,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "36",
 		"klass": "Dam",
 		"deltagare1": "Isabell Westlund",
@@ -400,8 +418,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "37",
 		"klass": "Mixed",
 		"deltagare1": "Karin Dahl Pedersen",
@@ -411,8 +429,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "38",
 		"klass": "Mixed",
 		"deltagare1": "Oscar Oliva Torstensson",
@@ -422,8 +440,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "39",
 		"klass": "Dam",
 		"deltagare1": "Emma Mäsak",
@@ -433,8 +451,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "40",
 		"klass": "Herr",
 		"deltagare1": "Erik Davidsson",
@@ -444,8 +462,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "41",
 		"klass": "Mixed",
 		"deltagare1": "Gun Rembeck",
@@ -455,8 +473,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "42",
 		"klass": "Dam",
 		"deltagare1": "Karin Elisabeth Elam",
@@ -466,8 +484,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "43",
 		"klass": "Dam",
 		"deltagare1": "Annica Willman",
@@ -477,8 +495,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "44",
 		"klass": "Mixed",
 		"deltagare1": "Alva Grell",
@@ -488,8 +506,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "45",
 		"klass": "Mixed",
 		"deltagare1": "johan granlund",
@@ -499,8 +517,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "46",
 		"klass": "Mixed",
 		"deltagare1": "Magnus Kämpelycke",
@@ -510,8 +528,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "47",
 		"klass": "Mixed",
 		"deltagare1": "Nils Crona",
@@ -521,8 +539,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "48",
 		"klass": "Herr",
 		"deltagare1": "Michael Crona",
@@ -532,8 +550,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "49",
 		"klass": "Herr",
 		"deltagare1": "Johan Söderlund",
@@ -543,8 +561,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "50",
 		"klass": "Mixed",
 		"deltagare1": "MATS OHLSSON",
@@ -554,8 +572,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "51",
 		"klass": "Herr",
 		"deltagare1": "Rolf Hansson",
@@ -565,8 +583,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "52",
 		"klass": "Mixed",
 		"deltagare1": "Vilma Ljungqvist",
@@ -576,8 +594,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "53",
 		"klass": "Mixed",
 		"deltagare1": "Helen Knutsson",
@@ -587,8 +605,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "54",
 		"klass": "Mixed",
 		"deltagare1": "Henrik Resmark",
@@ -598,8 +616,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "55",
 		"klass": "Mixed",
 		"deltagare1": "Henrik Vallentin",
@@ -609,8 +627,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "56",
 		"klass": "Herr",
 		"deltagare1": "Niklas Holmberg",
@@ -620,8 +638,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "57",
 		"klass": "Herr",
 		"deltagare1": "Calle Rendahl",
@@ -631,8 +649,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "58",
 		"klass": "Mixed",
 		"deltagare1": "Annika Nyqvist",
@@ -642,8 +660,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "59",
 		"klass": "Herr",
 		"deltagare1": "Oskar Hansson",
@@ -653,8 +671,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "60",
 		"klass": "Mixed",
 		"deltagare1": "Ekaterina Leffler",
@@ -664,8 +682,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "61",
 		"klass": "Mixed",
 		"deltagare1": "Richard Törnblom",
@@ -675,8 +693,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "62",
 		"klass": "Mixed",
 		"deltagare1": "Robert Heymann",
@@ -686,8 +704,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "63",
 		"klass": "Herr",
 		"deltagare1": "Carl Henrik Somp",
@@ -697,8 +715,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "64",
 		"klass": "Mixed",
 		"deltagare1": "eric ejeskär",
@@ -708,8 +726,8 @@
 		"officielltid": false,
 		"finished": "",
 		"startgrupp": "2"
-	},
-	{
+	  },
+	  {
 		"id": "65",
 		"klass": "Mixed",
 		"deltagare1": "Lovisa carlsson",
@@ -718,9 +736,9 @@
 		"maltid": "",
 		"officielltid": false,
 		"finished": "",
-		"startgrupp": "2"
-	},
-	{
+		"startgrupp": "3"
+	  },
+	  {
 		"id": "66",
 		"klass": "Herr",
 		"deltagare1": "Peter Fällén",
@@ -729,9 +747,9 @@
 		"maltid": "",
 		"officielltid": false,
 		"finished": "",
-		"startgrupp": "2"
-	},
-	{
+		"startgrupp": "3"
+	  },
+	  {
 		"id": "67",
 		"klass": "Herr",
 		"deltagare1": "Waldemar Nyqvist",
@@ -740,11 +758,11 @@
 		"maltid": "",
 		"officielltid": false,
 		"finished": "",
-		"startgrupp": "2"
-	}
-  ],
-  "deltagareLoppMellan": [
-    {
+		"startgrupp": "3"
+	  }
+	],
+	"deltagareLoppMellan": [
+	  {
 		"id": "67",
 		"klass": "Herr",
 		"deltagare1": "Olof Henriksson",
@@ -753,8 +771,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "68",
 		"klass": "Herr",
 		"deltagare1": "Alex Krook",
@@ -763,8 +781,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "69",
 		"klass": "Herr",
 		"deltagare1": "Joakim Mooij",
@@ -773,8 +791,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "70",
 		"klass": "Mixed",
 		"deltagare1": "Emil Storm",
@@ -783,8 +801,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "71",
 		"klass": "Dam",
 		"deltagare1": "Maya Kyllerman",
@@ -793,8 +811,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "72",
 		"klass": "Dam",
 		"deltagare1": "Maria Hofberg",
@@ -803,8 +821,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "73",
 		"klass": "Herr",
 		"deltagare1": "Camilla thomsrn",
@@ -813,8 +831,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "74",
 		"klass": "Mixed",
 		"deltagare1": "Camilla thomsrn",
@@ -823,8 +841,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "75",
 		"klass": "Mixed",
 		"deltagare1": "Ella Rydsbo",
@@ -833,8 +851,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "76",
 		"klass": "Mixed",
 		"deltagare1": "Marie Gunroth Troili",
@@ -843,8 +861,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "77",
 		"klass": "Mixed",
 		"deltagare1": "Johanna Fällén",
@@ -853,8 +871,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "78",
 		"klass": "Dam",
 		"deltagare1": "Engla Fällén",
@@ -863,8 +881,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "79",
 		"klass": "Mixed",
 		"deltagare1": "Sven-Ove Johansson",
@@ -873,8 +891,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "80",
 		"klass": "Mixed",
 		"deltagare1": "Nanna Bergendahl",
@@ -883,8 +901,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "81",
 		"klass": "Dam",
 		"deltagare1": "Aina Johansson",
@@ -893,8 +911,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "82",
 		"klass": "Dam",
 		"deltagare1": "Solveig Larsson",
@@ -903,8 +921,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "83",
 		"klass": "Mixed",
 		"deltagare1": "Göran Widmark",
@@ -913,8 +931,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "84",
 		"klass": "Mixed",
 		"deltagare1": "Cathy Douglas",
@@ -923,8 +941,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "85",
 		"klass": "Dam",
 		"deltagare1": "Ingrid Kyllerman",
@@ -933,8 +951,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "86",
 		"klass": "Dam",
 		"deltagare1": "Herweijer Jessica",
@@ -943,8 +961,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "87",
 		"klass": "Mixed",
 		"deltagare1": "Catrin Sandgren",
@@ -953,8 +971,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "88",
 		"klass": "Mixed",
 		"deltagare1": "Ida Sandgren",
@@ -963,8 +981,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "89",
 		"klass": "Mixed",
 		"deltagare1": "Kalle Didrikson",
@@ -973,8 +991,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "90",
 		"klass": "Dam",
 		"deltagare1": "Cecilia Jondring Sarv",
@@ -983,8 +1001,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "91",
 		"klass": "Dam",
 		"deltagare1": "Veronica Reinholdsson",
@@ -993,8 +1011,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "92",
 		"klass": "Dam",
 		"deltagare1": "Carina Olsson",
@@ -1003,8 +1021,8 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	},
-	{
+	  },
+	  {
 		"id": "93",
 		"klass": "Dam",
 		"deltagare1": "Sofia Heymann",
@@ -1013,6 +1031,7 @@
 		"maltid": "",
 		"officielltid": "",
 		"finished": false
-	}
-  ]
-}
+	  }
+	]
+  }
+  

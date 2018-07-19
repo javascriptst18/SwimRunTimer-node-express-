@@ -109,8 +109,8 @@ p{
     display: flex;
     flex-wrap: wrap;
 }
-.raceKlocka1, .raceKlocka2, .raceKlocka3{
-    width: 50%;
+.raceKlocka1, .raceKlocka2, .raceKlocka3, .raceKlocka4{
+    width: 33%;
     height: 90%;
     border-radius: 5px;
     font-size: 1.4rem;
@@ -120,8 +120,11 @@ p{
     background-color: white;
     color: #00c2db;
 }
-.clock1, .clock2, .clock3{
-    width:50%;
+.raceKlocka3{
+    width:80%;
+}
+.clock1, .clock2, .clock3, .clock4{
+    width:33%;
     font-size: 2.2em;
     align-self: center;
     text-align: center; 
@@ -140,11 +143,18 @@ p{
 .buttonWrapper{
 min-height: 100%;
 }
+.buttonWrapperLang{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+}
 .startButtons{
     width: 100%;
     align-self: center;
     height: 100px;
     display: flex;
+   
     
     
 }
@@ -153,9 +163,11 @@ min-height: 100%;
 }
 
 .teamButton{
-    width: 65px;
+    min-width: 65px;
+    max-width: 70px;
+    flex-grow: 1;
     height: 50px;
-    margin: 30px 0px 0px 15px;
+    margin: 30px 7px 0px 7px;
     border: 0;
     border-radius: 3px;
     outline:none;
@@ -201,5 +213,9 @@ min-height: 100%;
     .flexwrapperMeny{
         justify-content: center;
         padding-left: 0;
+    }
+    .clock1, .clock2, .clock4{
+        
+        font-size: 1.5em;
     }
 }
