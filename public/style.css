@@ -8,7 +8,10 @@
 
 body{
     background: rgb(255,255,255);
-    background: linear-gradient(360deg,rgba(0,211,238,1) 0%, rgba(0,194,219,1) 65%, rgba(0,145,169,1) 100%);
+    
+    /*background: linear-gradient(360deg,rgba(0,211,238,1) 0%, rgba(0,194,219,1) 65%, rgba(0,145,169,1) 100%);*/
+    background-image: linear-gradient(0deg, #00c2db 0%, #085078 100%);
+
 }
 header{
     
@@ -184,7 +187,7 @@ min-height: 100%;
     outline:none;
     font-size: 2rem;
     padding: 0 auto;
-    box-shadow: 0px 3px 10px 2px #757D75;
+    box-shadow: 0px 2px 7px 0px rgba(255,255,255,0.3);
     color: #00c2db;
     background-color: white;
 
