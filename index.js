@@ -284,12 +284,12 @@ app.delete("/reset/2", function(req, res, err) {
 });
 
 
-app.delete("/reset/4", function(req, res, err) {
+app.delete("/reset/3", function(req, res, err) {
   fs.readFile("./public/db.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
 
-    temp.starttid[4].starttid = "";
-    temp.starttid[4].started = false;
+    temp.starttid[3].starttid = "";
+    temp.starttid[3].started = false;
     
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
