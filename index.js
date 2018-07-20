@@ -40,8 +40,11 @@ app.get("/starttid/:lopp/:grupp", function(req, res, err) {
     else if(req.params.lopp == "langa" && req.params.grupp == 3){
       res.send(JSON.stringify(response.starttid[3].starttid));  
     }
-    else if(req.params.lopp == "mellan"){
+    else if(req.params.lopp == "mellan" && req.params.grupp == 1){
       res.send(JSON.stringify(response.starttid[2].starttid));  
+    }
+    else if(req.params.lopp == "mellan" && req.params.grupp == 2){
+      res.send(JSON.stringify(response.starttid[4].starttid));  
     }
 
     
@@ -139,8 +142,8 @@ app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
   fs.readFile("./public/db.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
     
-    for(let i = 0; i<4; i++){
-      if (temp.starttid[i].lopp == req.params.lopp) {
+    
+      if (req.params.lopp == "langa") {
         
         if(req.params.grupp == 1 && temp.starttid[0].started === false){
           if (req.body.starttid) {
@@ -160,15 +163,22 @@ app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
             temp.starttid[3].started = true;
           }
         }
-        else if(req.params.grupp == "ingen" && temp.starttid[2].started === false){
+
+      }else if(req.params.lopp == "mellan"){
+        if(req.params.grupp == 1 && temp.starttid[2].started === false){
           if (req.body.starttid) {
             temp.starttid[2].starttid = req.body.starttid;
             temp.starttid[2].started = true;
           }
         }
-        
-      }
-    }
+        else if(req.params.grupp == 2 && temp.starttid[4].started === false){
+          if (req.body.starttid) {
+            temp.starttid[4].starttid = req.body.starttid;
+            temp.starttid[4].started = true;
+          }
+        }
+      }  
+    
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;
       res.send("ok")
@@ -305,6 +315,21 @@ app.delete("/reset/4", function(req, res, err) {
 
     temp.starttid[2].starttid = "";
     temp.starttid[2].started = false;
+    
+    fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
+      if (err) throw err;
+      
+      res.send("ok")
+    });
+  });
+});
+
+app.delete("/reset/5", function(req, res, err) {
+  fs.readFile("./public/db.json", "utf-8", function(err, data) {
+    let temp = JSON.parse(data);
+
+    temp.starttid[4].starttid = "";
+    temp.starttid[4].started = false;
     
     fs.writeFile("./public/db.json", JSON.stringify(temp), function(err) {
       if (err) throw err;

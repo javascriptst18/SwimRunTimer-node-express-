@@ -4,6 +4,7 @@ let raceClock1 = document.querySelector(".raceKlocka1");
 let raceClock2 = document.querySelector(".raceKlocka2");
 let raceClock4 = document.querySelector(".raceKlocka4");
 let raceClock3 = document.querySelector(".raceKlocka3");
+let raceClock5 = document.querySelector(".raceKlocka5");
 let menyResultat = document.querySelector(".menyResultat");
 let raceSelect = document.querySelector(".raceSelect");
 let menyHem = document.querySelector(".menyHem");
@@ -22,6 +23,7 @@ let raceStartTime1;
 let raceStartTime2;
 let raceStartTime4;
 let raceStartTime3;
+let raceStartTime5;
 
 (async function() {
   let dataStart = await getFetchData("/starttid/langa/1");
@@ -63,7 +65,7 @@ let raceStartTime3;
 
 
 (async function() {
-  let dataStart = await getFetchData("/starttid/mellan/ingen");
+  let dataStart = await getFetchData("/starttid/mellan/1");
   if (dataStart) {
     let div = document.createElement("div");
     div.classList.add("clock3");
@@ -72,6 +74,19 @@ let raceStartTime3;
     parent.removeChild(raceClock3);
     raceStartTime3 = dataStart;
     startWatch3();
+  }
+})();
+
+(async function() {
+  let dataStart = await getFetchData("/starttid/mellan/2");
+  if (dataStart) {
+    let div = document.createElement("div");
+    div.classList.add("clock5");
+    raceClock5.insertAdjacentElement("afterend", div);
+    let parent = raceClock5.parentElement;
+    parent.removeChild(raceClock5);
+    raceStartTime5 = dataStart;
+    startWatch5();
   }
 })();
 
@@ -147,9 +162,11 @@ radioRaceSelect.addEventListener("change", e => {
   if (e.target.id == "storaRaceRadio") {
     document.querySelector(".storaResultat").classList.remove("hidden");
     document.querySelector(".mellanResultat").classList.add("hidden");
+    
   } else if (e.target.id == "mellanRaceRadio") {
     document.querySelector(".mellanResultat").classList.remove("hidden");
     document.querySelector(".storaResultat").classList.add("hidden");
+    
   }
 });
 
@@ -606,11 +623,12 @@ raceSelect.addEventListener("change", e => {
     lopp = "langa";
     document.querySelector(".mellan").classList.add("hidden");
     document.querySelector(".langa").classList.remove("hidden");
+    document.querySelector(".resultat").classList.add("hidden");
   } else if (raceSelect.value == "mellan") {
     lopp = "mellan";
     document.querySelector(".mellan").classList.remove("hidden");
     document.querySelector(".langa").classList.add("hidden");
-    startgrupp = "ingen";
+    document.querySelector(".resultat").classList.add("hidden");
   }
 });
 
@@ -660,10 +678,21 @@ raceClock3.addEventListener("click", () => {
   data.starttid = raceStartTime3;
   let parent = raceClock3.parentElement;
   parent.removeChild(raceClock3);
-  patchFetchData(`/starttid/mellan/ingen`, data);
+  patchFetchData(`/starttid/mellan/1`, data);
   startWatch3();
 });
-
+raceClock5.addEventListener("click", () => {
+  raceStartTime5 = new Date();
+  let data = {};
+  let div = document.createElement("div");
+  div.classList.add("clock5");
+  raceClock5.insertAdjacentElement("afterend", div);
+  data.starttid = raceStartTime5;
+  let parent = raceClock5.parentElement;
+  parent.removeChild(raceClock5);
+  patchFetchData(`/starttid/mellan/2`, data);
+  startWatch5();
+});
 
 
 buttonWrapper.addEventListener("click", e => {
@@ -673,16 +702,9 @@ buttonWrapper.addEventListener("click", e => {
       const goalTime = new Date();
       const team = e.target.textContent;
       let startgrupp;
-      //data = {};
-      //data.maltid = goalTime;
-      //await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
       await (async function() {
         let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
-        if (lopp == "langa") {
           startgrupp = teamData.startgrupp;
-        } else {
-          startgrupp = "ingen";
-        }
         await (async function() {
           let dataStart = await getFetchData(
             "/starttid/" + lopp + "/" + startgrupp
@@ -770,16 +792,9 @@ buttonWrapper2.addEventListener("click", e => {
       const goalTime = new Date();
       const team = e.target.textContent;
       let startgrupp;
-      //data = {};
-      //data.maltid = goalTime;
-      //await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
       await (async function() {
         let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
-        if (lopp == "langa") {
           startgrupp = teamData.startgrupp;
-        } else {
-          startgrupp = "ingen";
-        }
         await (async function() {
           let dataStart = await getFetchData(
             "/starttid/" + lopp + "/" + startgrupp
@@ -916,6 +931,20 @@ function startWatch4() {
 
 function stopWatch4() {
   clearInterval(runClock4);
+}
+function displayTime5() {
+  let time = secToHHMMSS(
+    (Date.parse(new Date()) - Date.parse(raceStartTime5)) / 1000
+  );
+  document.querySelector(".clock5").innerHTML = time;
+}
+
+function startWatch5() {
+  runClock5 = setInterval(displayTime5, 1000);
+}
+
+function stopWatch5() {
+  clearInterval(runClock5);
 }
 
 function msecToSec(msec) {
