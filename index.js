@@ -30,14 +30,14 @@ app.get("/starttid/:lopp/:grupp", function(req, res, err) {
     }
     
     let response = JSON.parse(data);
-    if(req.params.lopp == "stora" && req.params.grupp == 1){
+    if(req.params.lopp == "langa" && req.params.grupp == 1){
       
       res.send(JSON.stringify(response.starttid[0].starttid));
     }
-    else if(req.params.lopp == "stora" && req.params.grupp == 2){
+    else if(req.params.lopp == "langa" && req.params.grupp == 2){
       res.send(JSON.stringify(response.starttid[1].starttid));  
     }
-    else if(req.params.lopp == "stora" && req.params.grupp == 3){
+    else if(req.params.lopp == "langa" && req.params.grupp == 3){
       res.send(JSON.stringify(response.starttid[3].starttid));  
     }
     else if(req.params.lopp == "mellan"){
@@ -67,7 +67,7 @@ app.get("/rankadetider/:lopp", function(request, res, err) {
     }
     let response = JSON.parse(data);
 
-    if(request.params.lopp == "stora"){
+    if(request.params.lopp == "langa"){
       response = response.deltagareLoppStora;
     }else{
       response = response.deltagareLoppMellan;
@@ -98,7 +98,7 @@ app.get("/deltagare/:lopp", function(req, res, err) {
       throw err;
     }
     let response = JSON.parse(data);
-    if(req.params.lopp == "stora"){
+    if(req.params.lopp == "langa"){
       res.send(JSON.stringify(response.deltagareLoppStora));
     }
     else if(req.params.lopp == "mellan"){
@@ -114,13 +114,13 @@ app.get("/deltagare/:lopp/:grupp", function(req, res, err) {
       throw err;
     }
     let response = JSON.parse(data);
-    if(req.params.lopp == "stora"){
+    if(req.params.lopp == "langa"){
      let answer = response.deltagareLoppStora.filter(function(team){
       return req.params.grupp == team.id;
       });
 
       res.send(JSON.stringify(answer[0]));
-      //res.send(JSON.stringify(response.deltagareLoppStora[req.params.grupp]));
+      
     }
     else if(req.params.lopp == "mellan"){
       let answer = response.deltagareLoppMellan.filter(function(team){
@@ -182,7 +182,7 @@ app.patch("/starttid/:lopp/:grupp", function(req, res, err) {
 app.patch("/deltagarelopp/:lopp/:team", function(req, res, err) {
   fs.readFile("./public/db.json", "utf-8", function(err, data) {
     let temp = JSON.parse(data);
-    if(req.params.lopp == "stora"){
+    if(req.params.lopp == "langa"){
     temp.deltagareLoppStora.map(function(team) {
       if (team.id == req.params.team) { // && team.finished == false
         if (req.body.finished || req.body.delete == true) {

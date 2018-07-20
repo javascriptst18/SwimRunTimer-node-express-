@@ -16,7 +16,7 @@ let radioKlassSelect = document.querySelector(".radioKlassSelect");
 let counter1 = 0;
 let counter2 = 0;
 let counter3 = 0;
-let lopp = "stora";
+let lopp = "langa";
 let startgrupp = 1;
 let raceStartTime1;
 let raceStartTime2;
@@ -24,7 +24,7 @@ let raceStartTime4;
 let raceStartTime3;
 
 (async function() {
-  let dataStart = await getFetchData("/starttid/stora/1");
+  let dataStart = await getFetchData("/starttid/langa/1");
   if (dataStart) {
     let div = document.createElement("div");
     div.classList.add("clock1");
@@ -36,7 +36,7 @@ let raceStartTime3;
   }
 })();
 (async function() {
-  let dataStart = await getFetchData("/starttid/stora/2");
+  let dataStart = await getFetchData("/starttid/langa/2");
   if (dataStart) {
     let div = document.createElement("div");
     div.classList.add("clock2");
@@ -49,7 +49,7 @@ let raceStartTime3;
 })();
 
 (async function() {
-  let dataStart = await getFetchData("/starttid/stora/3");
+  let dataStart = await getFetchData("/starttid/langa/3");
   if (dataStart) {
     let div = document.createElement("div");
     div.classList.add("clock4");
@@ -78,7 +78,7 @@ let raceStartTime3;
 
 
 (async function() {
-  let rankedTimes = await getFetchData(`/rankadetider/stora`);
+  let rankedTimes = await getFetchData(`/rankadetider/langa`);
   let div = document.createElement("div");
   let resultatLista = document.querySelector(".resLanga");
   rankedTimes.map(function(team) {
@@ -110,7 +110,7 @@ let raceStartTime3;
 
 
 (async function() {
-  const deltagare = await getFetchData("/deltagare/stora");
+  const deltagare = await getFetchData("/deltagare/langa");
   let fragment = document.createDocumentFragment();
   for (let lag of deltagare) {
     let button = createTeamButton(lag.id);
@@ -136,7 +136,7 @@ let raceStartTime3;
 })();
 
 menyHem.addEventListener("click", () => {
-  lopp = "stora";
+  lopp = "langa";
   document.querySelector(".mellan").classList.add("hidden");
   document.querySelector(".resultat").classList.add("hidden");
   document.querySelector(".langa").classList.remove("hidden");
@@ -198,7 +198,7 @@ menyResultat.addEventListener("click", e => {
   resultatDiv.classList.remove("hidden");
 
   (async function() {
-    let rankedTimesLanga = await getFetchData(`/rankadetider/stora`);
+    let rankedTimesLanga = await getFetchData(`/rankadetider/langa`);
     let rankedTimesMellan = await getFetchData(`/rankadetider/mellan`);
     let div = document.createElement("div");
     div.classList.add("resWrapper");
@@ -207,7 +207,7 @@ menyResultat.addEventListener("click", e => {
     let divMellan = document.createElement("div");
     divMellan.classList.add("mellanResultat", "hidden");
 
-    //STORA
+    //LÅNGA
 
     let headline1 = document.createElement("h3");
     let divStoraTotal = document.createElement("div");
@@ -225,7 +225,7 @@ menyResultat.addEventListener("click", e => {
 
     divStora.appendChild(divStoraTotal);
 
-    //STORA HERR
+    //LÅNGA HERR
 
     let headline2 = document.createElement("h3");
     let divStoraHerr = document.createElement("div");
@@ -247,7 +247,7 @@ menyResultat.addEventListener("click", e => {
     });
     divStora.appendChild(divStoraHerr);
 
-    //STORA DAM
+    //LÅNGA DAM
 
     let headline3 = document.createElement("h3");
     let divStoraDam = document.createElement("div");
@@ -269,7 +269,7 @@ menyResultat.addEventListener("click", e => {
     });
     divStora.appendChild(divStoraDam);
 
-    //STORA MIX
+    //LÅNGA MIX
 
     let headline4 = document.createElement("h3");
     let divStoraMix = document.createElement("div");
@@ -377,7 +377,7 @@ menyResultat.addEventListener("click", e => {
     div.appendChild(divStora);
     div.appendChild(divMellan);
     resultatDiv.appendChild(div);
-    raceSelect.value = "Långa";
+    raceSelect.value = "langa";
   })();
 });
 
@@ -388,7 +388,7 @@ uppdatera.addEventListener("click", e => {
     resultatDiv.removeChild(resWrapper);
   }
   (async function() {
-    let rankedTimesLanga = await getFetchData(`/rankadetider/stora`);
+    let rankedTimesLanga = await getFetchData(`/rankadetider/langa`);
     let rankedTimesMellan = await getFetchData(`/rankadetider/mellan`);
     let div = document.createElement("div");
     div.classList.add("resWrapper");
@@ -404,7 +404,7 @@ uppdatera.addEventListener("click", e => {
       divMellan.classList.add("hidden");
     }
 
-    //STORA
+    //LÅNGA
 
     let headline1 = document.createElement("h3");
     let divStoraTotal = document.createElement("div");
@@ -425,7 +425,7 @@ uppdatera.addEventListener("click", e => {
 
     divStora.appendChild(divStoraTotal);
 
-    //STORA HERR
+    //LÅNGA HERR
 
     let headline2 = document.createElement("h3");
     let divStoraHerr = document.createElement("div");
@@ -450,7 +450,7 @@ uppdatera.addEventListener("click", e => {
     });
     divStora.appendChild(divStoraHerr);
 
-    //STORA DAM
+    //LÅNGA DAM
 
     let headline3 = document.createElement("h3");
     let divStoraDam = document.createElement("div");
@@ -475,7 +475,7 @@ uppdatera.addEventListener("click", e => {
     });
     divStora.appendChild(divStoraDam);
 
-    //STORA MIX
+    //LÅNGA MIX
 
     let headline4 = document.createElement("h3");
     let divStoraMix = document.createElement("div");
@@ -596,14 +596,14 @@ uppdatera.addEventListener("click", e => {
     div.appendChild(divStora);
     div.appendChild(divMellan);
     resultatDiv.appendChild(div);
-    raceSelect.value = "Långa";
+    raceSelect.value = "langa";
   })();
 });
 
 raceSelect.addEventListener("change", e => {
   raceSelect = document.querySelector(".raceSelect");
-  if (raceSelect.value == "stora") {
-    lopp = "stora";
+  if (raceSelect.value == "langa") {
+    lopp = "langa";
     document.querySelector(".mellan").classList.add("hidden");
     document.querySelector(".langa").classList.remove("hidden");
   } else if (raceSelect.value == "mellan") {
@@ -678,7 +678,7 @@ buttonWrapper.addEventListener("click", e => {
       //await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
       await (async function() {
         let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
-        if (lopp == "stora") {
+        if (lopp == "langa") {
           startgrupp = teamData.startgrupp;
         } else {
           startgrupp = "ingen";
@@ -689,7 +689,7 @@ buttonWrapper.addEventListener("click", e => {
           ); //get starttid
 
           let resVar;
-          if (lopp == "stora") {
+          if (lopp == "langa") {
             resVar = ".resLanga";
           } else {
             resVar = ".resMellan";
@@ -738,7 +738,7 @@ buttonWrapper.addEventListener("click", e => {
           let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
 
           let resVar;
-          if (lopp == "stora") {
+          if (lopp == "langa") {
             resVar = ".resLanga";
           } else {
             resVar = ".resMellan";
@@ -775,7 +775,7 @@ buttonWrapper2.addEventListener("click", e => {
       //await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data); //patch måltid
       await (async function() {
         let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
-        if (lopp == "stora") {
+        if (lopp == "langa") {
           startgrupp = teamData.startgrupp;
         } else {
           startgrupp = "ingen";
@@ -786,7 +786,7 @@ buttonWrapper2.addEventListener("click", e => {
           ); //get starttid
 
           let resVar;
-          if (lopp == "stora") {
+          if (lopp == "langa") {
             resVar = ".resLanga";
           } else {
             resVar = ".resMellan";
@@ -835,7 +835,7 @@ buttonWrapper2.addEventListener("click", e => {
           let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
 
           let resVar;
-          if (lopp == "stora") {
+          if (lopp == "langa") {
             resVar = ".resLanga";
           } else {
             resVar = ".resMellan";
