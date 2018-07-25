@@ -19,11 +19,7 @@ let counter2 = 0;
 let counter3 = 0;
 let lopp = "langa";
 let startgrupp = 1;
-let raceStartTime1;
-let raceStartTime2;
-let raceStartTime4;
-let raceStartTime3;
-let raceStartTime5;
+
 
 (async function() {
   let dataStart = await getFetchData("/starttid/langa/1");
@@ -33,8 +29,7 @@ let raceStartTime5;
     raceClock1.insertAdjacentElement("afterend", div);
     let parent = raceClock1.parentElement;
     parent.removeChild(raceClock1);
-    raceStartTime1 = dataStart;
-    startWatch1();
+    startWatch1(dataStart);
   }
 })();
 (async function() {
@@ -45,8 +40,7 @@ let raceStartTime5;
     raceClock2.insertAdjacentElement("afterend", div);
     let parent = raceClock2.parentElement;
     parent.removeChild(raceClock2);
-    raceStartTime2 = dataStart;
-    startWatch2();
+    startWatch2(dataStart);
   }
 })();
 
@@ -58,8 +52,7 @@ let raceStartTime5;
     raceClock4.insertAdjacentElement("afterend", div);
     let parent = raceClock4.parentElement;
     parent.removeChild(raceClock4);
-    raceStartTime4 = dataStart;
-    startWatch4();
+    startWatch4(dataStart);
   }
 })();
 
@@ -72,8 +65,7 @@ let raceStartTime5;
     raceClock3.insertAdjacentElement("afterend", div);
     let parent = raceClock3.parentElement;
     parent.removeChild(raceClock3);
-    raceStartTime3 = dataStart;
-    startWatch3();
+    startWatch3(dataStart);
   }
 })();
 
@@ -85,8 +77,7 @@ let raceStartTime5;
     raceClock5.insertAdjacentElement("afterend", div);
     let parent = raceClock5.parentElement;
     parent.removeChild(raceClock5);
-    raceStartTime5 = dataStart;
-    startWatch5();
+    startWatch5(dataStart);
   }
 })();
 
@@ -633,314 +624,131 @@ raceSelect.addEventListener("change", e => {
 });
 
 raceClock1.addEventListener("click", () => {
-  raceStartTime1 = new Date();
   let data = {};
-
-  data.starttid = raceStartTime1;
-  let div = document.createElement("div");
-  div.classList.add("clock1");
+  data.starttid = new Date();
+  let div = createDiv("clock1");
   raceClock1.insertAdjacentElement("afterend", div);
   let parent = raceClock1.parentElement;
   parent.removeChild(raceClock1);
   patchFetchData(`/starttid/${lopp}/1 `, data);
-  startWatch1();
+  startWatch1(data.starttid);
 });
 raceClock2.addEventListener("click", () => {
-  raceStartTime2 = new Date();
   let data = {};
-  let div = document.createElement("div");
-  div.classList.add("clock2");
+  data.starttid = new Date();
+  let div = createDiv("clock2");
   raceClock2.insertAdjacentElement("afterend", div);
-  data.starttid = raceStartTime2;
   let parent = raceClock2.parentElement;
   parent.removeChild(raceClock2);
   patchFetchData(`/starttid/${lopp}/2 `, data);
-  startWatch2();
+  startWatch2(data.starttid);
 });
 raceClock4.addEventListener("click", () => {
-  raceStartTime4 = new Date();
   let data = {};
-  let div = document.createElement("div");
-  div.classList.add("clock4");
+  data.starttid = new Date();
+  let div = createDiv("clock4");
   raceClock4.insertAdjacentElement("afterend", div);
-  data.starttid = raceStartTime4;
   let parent = raceClock4.parentElement;
   parent.removeChild(raceClock4);
   patchFetchData(`/starttid/${lopp}/3 `, data);
-  startWatch4();
+  startWatch4(data.starttid);
 });
 raceClock3.addEventListener("click", () => {
-  raceStartTime3 = new Date();
   let data = {};
-  let div = document.createElement("div");
-  div.classList.add("clock3");
+  data.starttid = new Date();
+  let div = createDiv("clock3");
   raceClock3.insertAdjacentElement("afterend", div);
-  data.starttid = raceStartTime3;
   let parent = raceClock3.parentElement;
   parent.removeChild(raceClock3);
   patchFetchData(`/starttid/mellan/1`, data);
-  startWatch3();
+  startWatch3(data.starttid);
 });
 raceClock5.addEventListener("click", () => {
-  raceStartTime5 = new Date();
   let data = {};
-  let div = document.createElement("div");
-  div.classList.add("clock5");
+  data.starttid = new Date();
+  let div = createDiv("clock5");
   raceClock5.insertAdjacentElement("afterend", div);
-  data.starttid = raceStartTime5;
   let parent = raceClock5.parentElement;
   parent.removeChild(raceClock5);
   patchFetchData(`/starttid/mellan/2`, data);
-  startWatch5();
+  startWatch5(data.starttid);
 });
 
 
 buttonWrapper.addEventListener("click", e => {
-  if (e.target.className == "teamButton") {
-    (async function() {
-      e.target.classList.add("pressed");
-      const goalTime = new Date();
-      const team = e.target.textContent;
-      let startgrupp;
-      await (async function() {
-        let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
-          startgrupp = teamData.startgrupp;
-        await (async function() {
-          let dataStart = await getFetchData(
-            "/starttid/" + lopp + "/" + startgrupp
-          ); //get starttid
-
-          let resVar;
-          if (lopp == "langa") {
-            resVar = ".resLanga";
-          } else {
-            resVar = ".resMellan";
-          }
-          let resultatLista = document.querySelector(resVar);
-          let result = Date.parse(goalTime) - Date.parse(dataStart);
-          result = secToHHMMSS(msecToSec(result));
-          let data = {};
-          data.maltid = goalTime;
-          data.officielltid = result;
-          data.finished = true;
-          await patchFetchData(
-            "/deltagarelopp" + "/" + lopp + "/" + team,
-            data
-          );
-
-          let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
-          let div = document.createElement("div");
-
-          rankedTimes.map(function(team) {
-            let para = document.createElement("p");
-            para.textContent = `Team ${team.id}: ${team.officielltid}`;
-            div.appendChild(para);
-          });
-
-          let last = resultatLista.lastChild;
-          resultatLista.removeChild(last);
-          resultatLista.appendChild(div);
-        })();
-      })();
-    })();
-  } else if (e.target.className == "teamButton pressed") {
-    let confirmed = confirm(
-      "Är du säker, detta kommer radera tid från team " + e.target.textContent
-    );
-    if (confirmed == true) {
-      const team = e.target.textContent;
-      let data = {};
-      data.maltid = "";
-      data.officielltid = "";
-      data.finished = false;
-      data.delete = true;
-      (async function() {
-        await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data);
-        (async function() {
-          let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
-
-          let resVar;
-          if (lopp == "langa") {
-            resVar = ".resLanga";
-          } else {
-            resVar = ".resMellan";
-          }
-          let resultatLista = document.querySelector(resVar);
-          let div = document.createElement("div");
-
-          rankedTimes.map(function(team) {
-            let para = document.createElement("p");
-            para.textContent = `Team ${team.id}: ${team.officielltid}`;
-            div.appendChild(para);
-          });
-
-          let last = resultatLista.lastChild;
-          resultatLista.removeChild(last);
-          resultatLista.appendChild(div);
-        })();
-      })();
-
-      e.target.classList.remove("pressed");
-    }
-  }
+ buttonRegister(e); 
 });
 
 buttonWrapper2.addEventListener("click", e => {
-  if (e.target.className == "teamButton") {
-    (async function() {
-      e.target.classList.add("pressed");
-      const goalTime = new Date();
-      const team = e.target.textContent;
-      let startgrupp;
-      await (async function() {
-        let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
-          startgrupp = teamData.startgrupp;
-        await (async function() {
-          let dataStart = await getFetchData(
-            "/starttid/" + lopp + "/" + startgrupp
-          ); //get starttid
-
-          let resVar;
-          if (lopp == "langa") {
-            resVar = ".resLanga";
-          } else {
-            resVar = ".resMellan";
-          }
-          let resultatLista = document.querySelector(resVar);
-          let result = Date.parse(goalTime) - Date.parse(dataStart);
-          result = secToHHMMSS(msecToSec(result));
-          let data = {};
-          data.maltid = goalTime;
-          data.officielltid = result;
-          data.finished = true;
-          await patchFetchData(
-            "/deltagarelopp" + "/" + lopp + "/" + team,
-            data
-          );
-
-          let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
-          let div = document.createElement("div");
-
-          rankedTimes.map(function(team) {
-            let para = document.createElement("p");
-            para.textContent = `Team ${team.id}: ${team.officielltid}`;
-            div.appendChild(para);
-          });
-
-          let last = resultatLista.lastChild;
-          resultatLista.removeChild(last);
-          resultatLista.appendChild(div);
-        })();
-      })();
-    })();
-  } else if (e.target.className == "teamButton pressed") {
-    let confirmed = confirm(
-      "Är du säker, detta kommer radera tid från team " + e.target.textContent
-    );
-    if (confirmed == true) {
-      const team = e.target.textContent;
-      let data = {};
-      data.maltid = "";
-      data.officielltid = "";
-      data.finished = false;
-      data.delete = true;
-      (async function() {
-        await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data);
-        (async function() {
-          let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
-
-          let resVar;
-          if (lopp == "langa") {
-            resVar = ".resLanga";
-          } else {
-            resVar = ".resMellan";
-          }
-          let resultatLista = document.querySelector(resVar);
-          let div = document.createElement("div");
-
-          rankedTimes.map(function(team) {
-            let para = document.createElement("p");
-            para.textContent = `Team ${team.id}: ${team.officielltid}`;
-            div.appendChild(para);
-          });
-
-          let last = resultatLista.lastChild;
-          resultatLista.removeChild(last);
-          resultatLista.appendChild(div);
-        })();
-      })();
-
-      e.target.classList.remove("pressed");
-    }
-  }
+ buttonRegister(e);
 });
 // FUNCTIONS
 
-function displayTime1() {
+function displayTime1(starttime) {
   let time = secToHHMMSS(
-    (Date.parse(new Date()) - Date.parse(raceStartTime1)) / 1000
+    (Date.parse(new Date()) - Date.parse(starttime)) / 1000
   );
   document.querySelector(".clock1").innerHTML = time;
 }
 
-function startWatch1() {
-  runClock1 = setInterval(displayTime1, 1000);
+function startWatch1(starttime) {
+  runClock1 = setInterval( function() {displayTime1(starttime)}, 1000);
 }
 
 function stopWatch1() {
   clearInterval(runClock1);
 }
-function displayTime2() {
+function displayTime2(starttime) {
   let time = secToHHMMSS(
-    (Date.parse(new Date()) - Date.parse(raceStartTime2)) / 1000
+    (Date.parse(new Date()) - Date.parse(starttime)) / 1000
   );
   document.querySelector(".clock2").innerHTML = time;
 }
 
-function startWatch2() {
-  runClock2 = setInterval(displayTime2, 1000);
+function startWatch2(starttime) {
+  runClock2 = setInterval( function() {displayTime2(starttime)}, 1000);;
 }
 
 function stopWatch2() {
   clearInterval(runClock2);
 }
-function displayTime3() {
+function displayTime3(starttime) {
   let time = secToHHMMSS(
-    (Date.parse(new Date()) - Date.parse(raceStartTime3)) / 1000
+    (Date.parse(new Date()) - Date.parse(starttime)) / 1000
   );
   document.querySelector(".clock3").innerHTML = time;
 }
 
-function startWatch3() {
-  runClock3 = setInterval(displayTime3, 1000);
+function startWatch3(starttime) {
+  runClock3 = setInterval( function() {displayTime3(starttime)}, 1000);
 }
 
 function stopWatch3() {
   clearInterval(runClock3);
 }
-function displayTime4() {
+function displayTime4(starttime) {
   let time = secToHHMMSS(
-    (Date.parse(new Date()) - Date.parse(raceStartTime4)) / 1000
+    (Date.parse(new Date()) - Date.parse(starttime)) / 1000
   );
   document.querySelector(".clock4").innerHTML = time;
 }
 
-function startWatch4() {
-  runClock4 = setInterval(displayTime4, 1000);
+function startWatch4(starttime) {
+  runClock4 = setInterval( function() {displayTime4(starttime)}, 1000);
 }
 
 function stopWatch4() {
   clearInterval(runClock4);
 }
-function displayTime5() {
+function displayTime5(starttime) {
   let time = secToHHMMSS(
-    (Date.parse(new Date()) - Date.parse(raceStartTime5)) / 1000
+    (Date.parse(new Date()) - Date.parse(starttime)) / 1000
   );
   document.querySelector(".clock5").innerHTML = time;
 }
 
-function startWatch5() {
-  runClock5 = setInterval(displayTime5, 1000);
+function startWatch5(starttime) {
+  runClock5 = setInterval( function() {displayTime5(starttime)}, 1000);
 }
 
 function stopWatch5() {
@@ -1025,4 +833,99 @@ async function patchFetchData(url, post) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function buttonRegister(e){
+  if (e.target.className == "teamButton") {
+    (async function() {
+      e.target.classList.add("pressed");
+      const goalTime = new Date();
+      const team = e.target.textContent;
+      let startgrupp;
+      await (async function() {
+        let teamData = await getFetchData("/deltagare/" + lopp + "/" + team); //get startgrupp
+          startgrupp = teamData.startgrupp;
+        await (async function() {
+          let dataStart = await getFetchData(
+            "/starttid/" + lopp + "/" + startgrupp
+          ); //get starttid
+
+          let resVar;
+          if (lopp == "langa") {
+            resVar = ".resLanga";
+          } else {
+            resVar = ".resMellan";
+          }
+          let resultatLista = document.querySelector(resVar);
+          let result = Date.parse(goalTime) - Date.parse(dataStart);
+          result = secToHHMMSS(msecToSec(result));
+          let data = {};
+          data.maltid = goalTime;
+          data.officielltid = result;
+          data.finished = true;
+          await patchFetchData(
+            "/deltagarelopp" + "/" + lopp + "/" + team,
+            data
+          );
+
+          let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
+          let div = document.createElement("div");
+
+          rankedTimes.map(function(team) {
+            let para = document.createElement("p");
+            para.textContent = `Team ${team.id}: ${team.officielltid}`;
+            div.appendChild(para);
+          });
+
+          let last = resultatLista.lastChild;
+          resultatLista.removeChild(last);
+          resultatLista.appendChild(div);
+        })();
+      })();
+    })();
+  } else if (e.target.className == "teamButton pressed") {
+    let confirmed = confirm(
+      "Är du säker, detta kommer radera tid från team " + e.target.textContent
+    );
+    if (confirmed == true) {
+      const team = e.target.textContent;
+      let data = {};
+      data.maltid = "";
+      data.officielltid = "";
+      data.finished = false;
+      data.delete = true;
+      (async function() {
+        await patchFetchData("/deltagarelopp/" + lopp + "/" + team, data);
+        (async function() {
+          let rankedTimes = await getFetchData(`/rankadetider/${lopp}`);
+
+          let resVar;
+          if (lopp == "langa") {
+            resVar = ".resLanga";
+          } else {
+            resVar = ".resMellan";
+          }
+          let resultatLista = document.querySelector(resVar);
+          let div = document.createElement("div");
+
+          rankedTimes.map(function(team) {
+            let para = document.createElement("p");
+            para.textContent = `Team ${team.id}: ${team.officielltid}`;
+            div.appendChild(para);
+          });
+
+          let last = resultatLista.lastChild;
+          resultatLista.removeChild(last);
+          resultatLista.appendChild(div);
+        })();
+      })();
+
+      e.target.classList.remove("pressed");
+    }
+  }
+}
+function createDiv(divClass){
+  let div = document.createElement("div");
+  div.classList.add(divClass);
+  return div;
 }
