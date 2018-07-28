@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false })); // So we can handle form-data 
 
 
 app.get("/", function(request, res, err) {
-  res.sendFile("index.html");
+   res.sendFile("index.html");
 });
 
 app.get("/state", function(request, res, err) {
