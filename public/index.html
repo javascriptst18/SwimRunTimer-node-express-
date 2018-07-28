@@ -14,27 +14,27 @@
 <body>
     <div class="gridWrapperMain">
         <header class="griditem1">
-            <h1>
+            <h1 style="color:white">
                 Stocken SOS tidtagare
             </h1>
 
             <ul class="flexwrapperMeny">
-                    <a href="#"><li class="meny">Hem</li></a>
-                <a href="#"><li class="meny">Lägg till nya deltagare</li></a>
-                <a href="#"><li class="meny menyResultat">resultat</li></a>
+                    <a href="#"class="menyHem"><li class="meny">Hem</li></a>
+                <a href="" class="menyResultat"><li class="meny">Resultat</li></a>
                 <select class="meny raceSelect">
-                    <option value="stora">Långa</option>
+                    <option value="langa">Långa</option>
                     <option value="mellan">Mellan</option>
                 </select>
                         
             </ul>
         </header>
 
-        <div class="langa">
+        <div class="langa flexMain">
         <main class="griditem2">
             <div class="startButtons">
             <button class="raceKlocka1">Starta grupp 1</button>
             <button class="raceKlocka2">Starta grupp 2</button>
+            <button class="raceKlocka4">Starta grupp 3</button>
             </div>
             <div class="buttonWrapperLang"></div>
         </main>
@@ -45,11 +45,11 @@
              
         </aside>
         </div>
-        <div class="mellan hidden">
+        <div class="mellan hidden flexMain">
                 <main class="griditem2">
                     <div class="startButtons">
-                    <button class="raceKlocka3">Starta mellan race</button>
-                    
+                    <button class="raceKlocka3">Starta grupp 4</button>
+                    <button class="raceKlocka5">Starta grupp 5</button>
                     </div>
                     <div class="buttonWrapperMellan"></div>
                 </main>
@@ -59,6 +59,33 @@
                      <h3>Resultat</h3>
                      
                 </aside>
+                </div>
+                <div class="resultat hidden">
+                    <div class="flexRadio">
+                    <button class="uppdatera">Uppdatera resultat</button>
+                    <form class="radioRaceSelect">
+                    
+                    <input type="radio" name="raceRadio" id="storaRaceRadio">
+                    <label for="storaRaceRadio">Långa Loppet</label>
+                    
+                    <input type="radio" name="raceRadio" id="mellanRaceRadio">
+                    <label for="mellanRaceRadio">Mellan Loppet</label>
+                </form>
+                <form class="radioKlassSelect">
+                    
+                    <input type="radio" name="raceKlass" id="Total">
+                    <label for="Total">Total</label>
+                    
+                    <input type="radio" name="raceKlass" id="Herr">
+                    <label for="Herr">Herrar</label>
+                    
+                    <input type="radio" name="raceKlass" id="Dam">
+                    <label for="Dam">Damer</label>
+                    
+                    <input type="radio" name="raceKlass" id="Mix">
+                    <label for="Mix">Mixed</label>
+                </form>
+            </div>
                 </div>
         <footer class="griditem4">
              <p class="sidfot">Copywrite Carl-Axel Hallgren</p>
