@@ -1,11 +1,11 @@
-const express = require("express"); // Import express package
+const express = require('express'); // Import express package
+const fs = require('fs');
+
 const app = express(); // Create our application
 
 const PORT = process.env.PORT || 3000;
-const fs = require("fs");
 
-
-app.use(express.static("public")); // All static files are sent from the public folder
+app.use(express.static('public')); // All static files are sent from the public folder
 app.use(express.json()); // So we can handle JSON-data from the user
 app.use(express.urlencoded({ extended: false })); // So we can handle form-data from the user
 

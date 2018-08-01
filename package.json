@@ -7,11 +7,15 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "Jesper Orb <jesperorb@gmail.com> (https://jesperorb.com/)",
+  "author": "Carl-Axel Hallgren",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.4",
-    "express": "4.16.3",
-    "json-stringify-pretty-compact": "^1.2.0"
+    "express": "4.16.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
   }
 }
